@@ -1,0 +1,184 @@
+
+--- Page 1 ---
+HireX — REST API Reference & Contract
+Specification
+Document ID: HXP-HANDOVER-07
+Platform Version: HireX V0 / Backend REST Services
+Target Audience: Frontend Developers, Backend Engineers, Integration Engineers, QA Testers
+Base URL (Local): http://localhost:3001
+Base URL (Hosted Staging): https://api.dev.hire.zobay.in
+1. Global Headers & Error Format
+1.1 Authentication & Session Carrier
+Cookie Authentication: All authenticated requests rely on the HTTP-only cookie better-
+auth.session_token  or bearer authorization headers where applicable.
+Content-Type: application/json  (or multipart/form-data  for file uploads).
+1.2 Standard Error Response Payload
+{
+  "statusCode": 400,
+  "message": "Cannot revert application to APPLIED stage",
+  "error": "Bad Request",
+  "timestamp": "2026-10-28T12:00:00.000Z",
+  "path": "/applications/app-123/status"
+}
+2. Authentication & Identity Endpoints
+2.1 Candidate & General Auth ( AuthController )
+POST /api/auth/sign-in/email
+Body: { "email": "candidate@example.com", "password": "Password123!" }
+Returns: User profile and sets session cookie.
+POST /api/auth/sign-up/email
+Body: { "name": "Jane Doe", "email": "jane@example.com", "password":
+"Password123!" }
+Returns: 201 Created  with initialized candidate profile.
+POST /api/auth/sign-out
+--- Page 2 ---
+Returns: Invalidation of session and clear-cookie header ( Max-Age=0 ).
+2.2 Recruiter Organization Signup ( RecruiterSignupController )
+POST /recruiters/signup
+Body: { "companyName": "Acme Inc", "name": "Recruiter Bob", "email":
+"bob@acme.com", "password": "Password123!" }
+Returns: Provisions Company  tenant, User  (role: RECRUITER ), and Recruiter  (role: ADMIN ).
+2.3 Interviewer Authentication ( InterviewerAuthController )
+POST /auth/interviewer/login
+Body: { "email": "interviewer@acme.com", "password": "Password123!",
+"rememberMe": true }
+Returns: Established interviewer session with extended 7-day TTL if rememberMe  is enabled.
+GET /auth/interviewer/invite?token=<TOKEN>
+Returns: Pre-filled invitation metadata: { "valid": true, "email": "...", "companyName":
+"..." } .
+POST /auth/interviewer/invite/accept
+Body: { "token": "...", "password": "Password123!", "name": "Devin Panelist" }
+Returns: Activates interviewer account and destroys the token.
+3. Jobs & Dynamic Application Forms
+3.1 Public Job Discovery ( JobsController )
+GET /jobs
+Query: ?search=frontend&location=bengaluru&workMode=remote&page=1&limit=20
+Returns: List of published jobs with company details, salary, and requirements.
+GET /jobs/:id
+Returns: Single job posting details.
+3.2 Dynamic Form Schema ( ApplicationFormController )
+GET /jobs/:id/application-form
+Returns:
+--- Page 3 ---
+{
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Technical Qualifications",
+      "questions": [
+        {
+          "id": "q-1",
+          "type": "NUMBER",
+          "label": "Years with React & Next.js",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
+POST /recruiters/jobs  ( JobsController )
+Scope: Recruiter Admin / Member
+Body: Job details and nested applicationForm  sections and questions schema.
+4. Applications & State Machine Pipeline
+4.1 Candidate Submission ( ApplicationsController )
+POST /applications
+Scope: Candidate
+Body:
+{
+  "jobId": "job-123",
+  "screeningAnswers": { "q-1": 5 },
+  "resumeId": "res-456",
+  "coverNote": "Excited for this position"
+}
+POST /public/guest-resume
+Scope: Public / Guest
+Body: multipart/form-data  with file , name , email , phone .
+Returns: Creates guest candidate record and uploaded resume reference.
+4.2 Pipeline Stage Transitions ( ApplicationsController )
+PATCH /applications/:id/status
+Scope: Recruiter
+--- Page 4 ---
+Body: { "status": "SCREENING" | "INTERVIEW" | "OFFER_STAGE" |
+"DOCUMENT_VERIFICATION" | "HIRED" | "REJECTED" }
+Enforced Business Rules:
+Cannot revert to APPLIED  once progressed.
+Cannot advance to OFFER_STAGE  if open interviews remain in ASSIGNED  or CONFIRMED .
+Cannot set status to HIRED  unless all required documents are VERIFIED .
+5. Interviews & Schedular (MeetX) Orchestration
+5.1 Availability & Slot Generation
+POST /interviews/availability  ( AvailabilityController )
+Scope: Interviewer
+Body: { "dayOfWeek": 2, "startTime": "14:00", "endTime": "18:00", "timezone":
+"Asia/Kolkata", "isRecurring": true }
+POST /interviews/slots/generate  ( SlotsController )
+Scope: Recruiter
+Body: { "interviewId": "int-123", "interviewerId": "usr-456",
+"durationMinutes": 60 }
+Returns: List of generated booking slots.
+5.2 Atomic Slot Booking ( BookingController )
+POST /interviews/booking
+Scope: Candidate
+Body: { "slotId": "slot-789" }
+Returns:
+{
+  "success": true,
+  "meetingId": "mtg_sched_89123",
+  "candidateJoinUrl": "https://dev.scheduler.zobay.in/join/candidate-xyz",
+  "calendarEventId": "cal-123"
+}
+5.3 Scorecard Submission ( InterviewsController )
+POST /interviews/:id/feedback
+Scope: Interviewer
+Body:
+--- Page 5 ---
+{
+  "ratings": { "coding": 4, "communication": 5, "architecture": 4 },
+  "culturalFitScore": 5,
+  "feedback": "Strong algorithmic fundamentals. Great culture fit.",
+  "recommendation": "HIRE"
+}
+Returns: Saved InterviewFeedback  record and marks interview COMPLETED .
+6. Schedular (MeetX) Webhooks
+POST /webhooks/schedular  ( SchedularWebhookController )
+Auth: HMAC SHA-256 Signature ( x-signature  header validated against
+SCHEDULAR_WEBHOOK_SECRET ).
+Supported Events:
+meeting.ended : Automatically marks interview as COMPLETED .
+meeting.mom.ready : Fetches transcripts and AI Minutes of Meeting, saving them to the
+interview record.
+7. Offer Letters & Document Verification
+7.1 Offer Generation ( OffersController )
+POST /recruiters/offers/generate
+Scope: Recruiter Admin
+Body: { "applicationId": "app-123", "salary": " ₹ 16 LPA", "startDate": "2026-11-
+15", "expiryDays": 7 }
+Returns: Generates PDF offer on Cloudflare R2, saves Offer  (status: EXTENDED ).
+POST /candidate/offers/:id/accept
+Scope: Candidate
+Body: { "signature": "Jane Doe" }
+Returns: Updates offer to ACCEPTED ; automatically transitions application to
+DOCUMENT_VERIFICATION .
+7.2 Document Compliance ( DocumentsController )
+POST /candidate/documents/upload
+Scope: Candidate
+Body: multipart/form-data  with files, type  ("GOVERNMENT_ID"), applicationId .
+--- Page 6 ---
+Returns: Persists to Cloudflare R2, creates Document  and DocumentFile  records in PENDING
+status.
+PATCH /recruiters/documents/:id/verify
+Scope: Recruiter
+Returns: Sets status to VERIFIED  with verifiedAt  and verifiedBy  audit stamps.
+PATCH /recruiters/documents/:id/reject
+Scope: Recruiter
+Body: { "reason": "Expired document" }
+Returns: Sets status to REJECTED . Re-upload by candidate resets status to PENDING .
+8. Global Search & Syndication Feeds
+8.1 Command Palette Search ( SearchController )
+GET /search?q=<QUERY>
+Scope: Authenticated (Role-scoped results)
+Candidate returns: Matching open jobs and active applications.
+Recruiter returns: Matching jobs, candidate names, and applicants.
+Interviewer returns: Assigned interviews and candidate names.
+8.2 External Aggregator XML Feeds ( FeedsController )
+GET /feeds/indeed-jobs.xml  — Indeed XML schema.
+GET /feeds/linkedin-jobs.xml  — LinkedIn XML schema.
+GET /feeds/naukri-jobs.xml  — Naukri XML schema.

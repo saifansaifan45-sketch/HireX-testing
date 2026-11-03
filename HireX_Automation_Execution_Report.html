@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireX Automation & Defect Execution Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 24px; }
+        .container { max-width: 1250px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #581c87 0%, #3b0764 100%); padding: 32px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
+        .header h1 { margin: 0 0 8px 0; font-size: 28px; color: #ffffff; }
+        .header p { margin: 0; color: #e9d5ff; font-size: 14px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .metric-card { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; }
+        .metric-val { font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+        .metric-label { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .text-green { color: #4ade80; }
+        .text-purple { color: #c084fc; }
+        .text-blue { color: #60a5fa; }
+        .text-red { color: #f87171; }
+        
+        .defects-section { margin-bottom: 24px; }
+        .defects-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #fca5a5; display: flex; align-items: center; gap: 8px; }
+        .defect-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 16px; }
+        .defect-card { background: #1e293b; border-left: 4px solid #ef4444; border-radius: 8px; padding: 16px; border-top: 1px solid #334155; border-right: 1px solid #334155; border-bottom: 1px solid #334155; }
+        .defect-id { font-size: 12px; font-weight: 700; color: #f87171; text-transform: uppercase; margin-bottom: 4px; }
+        .defect-name { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 8px; }
+        .defect-desc { font-size: 13px; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px; }
+        .defect-meta { font-size: 12px; color: #94a3b8; }
+
+        .table-container { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #334155; padding: 14px 16px; font-size: 13px; color: #e2e8f0; font-weight: 600; text-transform: uppercase; }
+        td { padding: 14px 16px; border-top: 1px solid #334155; font-size: 14px; }
+        tr:hover { background: #243248; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; }
+        .badge-pass { background: #14532d; color: #86efac; border: 1px solid #22c55e; }
+        .badge-fail { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+        .badge-p1 { background: #701a75; color: #f5d0fe; }
+        .badge-p2 { background: #1e3a8a; color: #bfdbfe; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HireX Recruitment Platform — QA Automation & Bug Hunter Report</h1>
+            <p>Executed by Senior QA Bug Hunter & SDET Architect (Saifan) | Engine: Playwright Python & Pytest | Target: Development Environment (api.dev.hire.zobay.in)</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-val text-purple">34</div>
+                <div class="metric-label">Executed Automated Tests</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val text-green">27</div>
+                <div class="metric-label">Passed Tests</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val text-red">7</div>
+                <div class="metric-label">Confirmed Active Defects</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val text-blue">79.4%</div>
+                <div class="metric-label">Pass Percentage</div>
+            </div>
+        </div>
+
+        <div class="defects-section">
+            <div class="defects-title">🚨 Confirmed Application Defects Uncovered During Deep Bug Hunting</div>
+            <div class="defect-cards-grid">
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-001 | High (S2) | Priority P1</div>
+                    <div class="defect-name">CWE-213 / OWASP API3: Sensitive Data Exposure on Public GET /jobs</div>
+                    <div class="defect-desc">Public endpoint serializes Prisma Company model directly, leaking corporate digitalSignatureUrl executive signing assets.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> GET /jobs | <strong>Regression Test:</strong> TC_HX_REG_001</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-002 | High (S2) | Priority P1</div>
+                    <div class="defect-name">Unhandled HTTP 500 Crash on Interview Feedback Submission</div>
+                    <div class="defect-desc">Submitting scorecard on an interview in ASSIGNED status crashes backend with HTTP 500 instead of validating lifecycle state.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> POST /interviews/:id/feedback | <strong>Regression Test:</strong> TC_HX_FEED_001</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-003 | High (S2) | Priority P1</div>
+                    <div class="defect-name">Unhandled HTTP 500 Crash on Interviewer Invite Missing 'name'</div>
+                    <div class="defect-desc">Omitting mandatory name field crashes backend due to null constraint violation rather than returning 400 Bad Request.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> POST /interviewers/invite | <strong>Regression Test:</strong> TC_HX_TEAM_001</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-004 | High (S2) | Priority P1</div>
+                    <div class="defect-name">Unhandled HTTP 500 Crash on Team Invite Invalid Role Enum</div>
+                    <div class="defect-desc">Sending unsupported role string crashes backend with 500 due to unhandled Prisma Enum mapping error.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> POST /team/invite | <strong>Regression Test:</strong> TC_HX_TEAM_002</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-005 | Medium (S3) | Priority P2</div>
+                    <div class="defect-name">Missing Email Validation on Team Invite (Ghost Account Injection)</div>
+                    <div class="defect-desc">Accepts malformed non-email strings, creates database records, and generates invite tokens with 201 Created.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> POST /team/invite | <strong>Regression Test:</strong> TC_HX_TEAM_003</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-006 | High (S2) | Priority P1</div>
+                    <div class="defect-name">Broken Resume Storage URLs with Hardcoded localhost:3001 Origin</div>
+                    <div class="defect-desc">Candidate resume URLs contain hardcoded localhost:3001 origin, leading to ERR_CONNECTION_REFUSED on download in cloud dev environment.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> GET /recruiter/applications | <strong>Regression Test:</strong> TC_HX_DOC_001</div>
+                </div>
+                <div class="defect-card">
+                    <div class="defect-id">DF-HX-007 | Medium (S3) | Priority P2</div>
+                    <div class="defect-name">Missing Non-Empty Validation on Candidate Profile Name (Blank Dossiers)</div>
+                    <div class="defect-desc">PUT /candidate/me accepts empty string name ('') with HTTP 200 OK, wiping candidate identity across all dossiers and offer records.</div>
+                    <div class="defect-meta"><strong>Endpoint:</strong> PUT /candidate/me | <strong>Regression Test:</strong> TC_HX_CAND_001</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Test Name / Function</th>
+                        <th>Category</th>
+                        <th>Observed Execution Result</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_001</strong></td>
+                        <td>test_recruiter_portal_loads</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Page loaded in < 2s. Title: 'HireX Employer – Recruiter Portal', email, password, and sign-in controls verified visible.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_002</strong></td>
+                        <td>test_interviewer_portal_loads</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Page loaded in < 2s. Title: 'HireX - Interviewer Portal', inputs and sign-in controls verified visible.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_003</strong></td>
+                        <td>test_candidate_career_page_loads</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Career page loaded in < 2s. Title: 'HireX Demo Corp Careers & Opportunities', job search input and filter chips verified.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_004</strong></td>
+                        <td>test_backend_api_health_check</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK received. JSON verified: status='ok', service='hirex-backend', version='v0.0.1'.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_005</strong></td>
+                        <td>test_public_jobs_endpoint</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK received. List of 10 published jobs returned with full schemas.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_006</strong></td>
+                        <td>test_recruiter_login_dashboard_access</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Recruiter authenticated successfully. Redirected to /dashboard. Sidebar navigation and company badge verified.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_007</strong></td>
+                        <td>test_interviewer_login_dashboard_access</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Interviewer authenticated via /auth/interviewer/login. Redirected to /dashboard. Interview queue loaded.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SMK_008</strong></td>
+                        <td>test_candidate_login_dashboard_access</td>
+                        <td>Smoke</td>
+                        <td style="color: #cbd5e1;">Candidate authenticated via Better-Auth. Redirected to /dashboard. Applications and profile access verified.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_API_001</strong></td>
+                        <td>test_get_jobs_schema</td>
+                        <td>API</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK. Validated fields: id, companyId, title, description, location, workMode, employmentType, status.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_API_002</strong></td>
+                        <td>test_get_single_job_details</td>
+                        <td>API</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK. Retrieved full job entity including nested company metadata and application form questions.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_API_003</strong></td>
+                        <td>test_get_nonexistent_job_returns_404</td>
+                        <td>API</td>
+                        <td style="color: #cbd5e1;">HTTP 404 Not Found received for dummy UUID as expected by API specification.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_AUTH_001</strong></td>
+                        <td>test_candidate_signin_api</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK. Better-Auth session token and candidate user object returned.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_AUTH_006</strong></td>
+                        <td>test_interviewer_login_api</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">HTTP 201 Created. Interviewer session established with role INTERVIEWER.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_AUTH_005</strong></td>
+                        <td>test_recruiter_signin_invalid_password</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">HTTP 403 / 401 received with invalid credentials as expected. Unauthorized access blocked.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_API_006</strong></td>
+                        <td>test_global_search_api</td>
+                        <td>API</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK. Global search endpoint executed role-scoped query successfully.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_API_007</strong></td>
+                        <td>test_aggregator_xml_feeds</td>
+                        <td>API</td>
+                        <td style="color: #cbd5e1;">HTTP 200 OK. Valid XML feed conforming to Indeed schema returned.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_CP_002</strong></td>
+                        <td>test_candidate_job_search_and_filters</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">Job search and work mode filter chips (Remote, Hybrid, All) verified updating UI dynamically.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_TRACK_001</strong></td>
+                        <td>test_candidate_dashboard_navigation</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">Candidate dashboard navigation links (/applications, /candidate/documents, /candidate/profile) verified visible.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_AVAIL_001</strong></td>
+                        <td>test_interviewer_dashboard_sections</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">Interviewer dashboard workspace and availability configuration navigation verified.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_DASH_003</strong></td>
+                        <td>test_recruiter_dashboard_sections</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">Recruiter dashboard navigation links (/jobs, /applicants, /interviews, /team, /settings) verified.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_PERF_001</strong></td>
+                        <td>test_jobs_api_latency</td>
+                        <td>Perf</td>
+                        <td style="color: #cbd5e1;">Measured 5 consecutive requests. Average latency: 215.4ms (within acceptable dev SLO < 500ms).</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_PERF_002</strong></td>
+                        <td>test_root_health_latency</td>
+                        <td>Perf</td>
+                        <td style="color: #cbd5e1;">Measured 5 consecutive requests. Average latency: 132.8ms (within acceptable dev SLO < 300ms).</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SEC_004</strong></td>
+                        <td>test_cookie_security_attributes</td>
+                        <td>Security</td>
+                        <td style="color: #cbd5e1;">Verified Set-Cookie header contains HttpOnly, Secure, SameSite=Lax attributes on session tokens.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SEC_001</strong></td>
+                        <td>test_candidate_cannot_access_recruiter_endpoints</td>
+                        <td>Security</td>
+                        <td style="color: #cbd5e1;">HTTP 401/403/404 received when attempting privileged recruiter job creation using candidate cookie.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_SEC_005</strong></td>
+                        <td>test_sql_injection_defense</td>
+                        <td>Security</td>
+                        <td style="color: #cbd5e1;">SQLi payloads (' OR 1=1 --, DROP TABLE) safely sanitized and handled by Prisma ORM without syntax error.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_REG_002</strong></td>
+                        <td>test_recruiter_and_candidate_portal_synchronization</td>
+                        <td>Defect Regression</td>
+                        <td style="color: #cbd5e1;">Verified public candidate job postings synchronize with recruiter dashboard jobs state.</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_REG_001</strong></td>
+                        <td>test_df_001_jobs_api_no_sensitive_fields_exposure</td>
+                        <td>Defect Regression</td>
+                        <td style="color: #fca5a5;">FAIL: company.digitalSignatureUrl and internal credentials exposed in public /jobs JSON payload (DF-HX-001).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_FEED_001</strong></td>
+                        <td>test_df_002_interview_feedback_handles_unready_status_gracefully</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: POST /interviewer/interviews/:id/feedback crashed with HTTP 500 Internal Server Error (DF-HX-002).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_TEAM_001</strong></td>
+                        <td>test_df_003_interviewer_invite_validates_missing_name</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: POST /recruiter/interviewers/invite crashed with HTTP 500 when name was omitted (DF-HX-003).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_TEAM_002</strong></td>
+                        <td>test_df_004_team_invite_invalid_role_enum_validation</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: POST /recruiter/team/invite crashed with HTTP 500 for invalid role enum (DF-HX-004).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_TEAM_003</strong></td>
+                        <td>test_df_005_team_invite_email_format_validation</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: POST /recruiter/team/invite accepted malformed non-email string with 201 Created (DF-HX-005).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_DOC_001</strong></td>
+                        <td>test_df_006_resume_urls_no_localhost_hardcoding</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: Resume records in cloud environment contain hardcoded http://localhost:3001 URLs (DF-HX-006).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_CAND_001</strong></td>
+                        <td>test_df_007_candidate_profile_name_min_length_validation</td>
+                        <td>Functional</td>
+                        <td style="color: #fca5a5;">FAIL: PUT /candidate/me accepted empty name string ('') with 200 OK (DF-HX-007).</td>
+                        <td><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TC_HX_WIZ_004</strong></td>
+                        <td>test_fp_001_candidate_reset_draft_dialog_behavior</td>
+                        <td>Functional</td>
+                        <td style="color: #cbd5e1;">PASS: window.confirm dialog triggered as designed to guard draft loss (FP-HX-001).</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

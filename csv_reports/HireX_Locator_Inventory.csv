@@ -1,0 +1,375 @@
+﻿Locator_ID,Element_ID,Portal,Route,Primary_Locator,Strategy,Uniqueness,Stability_Score,Fallback_Selector
+LOC_HX_CAND_JOB_BOARD_001,HX_CAND_JOB_BOARD_001,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_002,HX_CAND_JOB_BOARD_002,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""#about""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_003,HX_CAND_JOB_BOARD_003,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""#values""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_004,HX_CAND_JOB_BOARD_004,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""#open-positions""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_005,HX_CAND_JOB_BOARD_005,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""#open-positions""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_006,HX_CAND_JOB_BOARD_006,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""/careers/hirex-demo-corp/login""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_007,HX_CAND_JOB_BOARD_007,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""/careers/hirex-demo-corp/register""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_008,HX_CAND_JOB_BOARD_008,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""#open-positions""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_009,HX_CAND_JOB_BOARD_009,Candidate,/careers/hirex-demo-corp,"page.locator('a[href=""https://hirex.dev""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_BOARD_010,HX_CAND_JOB_BOARD_010,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Grid view')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_011,HX_CAND_JOB_BOARD_011,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='List view')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_012,HX_CAND_JOB_BOARD_012,Candidate,/careers/hirex-demo-corp,"page.get_by_placeholder('Search by role title, skill, or location...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_JOB_BOARD_013,HX_CAND_JOB_BOARD_013,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='All')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_014,HX_CAND_JOB_BOARD_014,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Hybrid')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_015,HX_CAND_JOB_BOARD_015,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Remote')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_016,HX_CAND_JOB_BOARD_016,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='On-site')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_017,HX_CAND_JOB_BOARD_017,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Full Stack Developer End-to-end feature delivery across frontend and backend ser')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_018,HX_CAND_JOB_BOARD_018,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Frontend Developer Build responsive, accessible, and high-performance user inter')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_019,HX_CAND_JOB_BOARD_019,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Backend Developer Lead architecture for microservices and API gateways. Strong b')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_BOARD_020,HX_CAND_JOB_BOARD_020,Candidate,/careers/hirex-demo-corp,"page.get_by_role('button', name='Software Engineer Design and develop high-scale distributed backend and full-sta')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_JOB_DETAIL_001,HX_CAND_JOB_DETAIL_001,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_002,HX_CAND_JOB_DETAIL_002,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""#about""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_003,HX_CAND_JOB_DETAIL_003,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""#values""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_004,HX_CAND_JOB_DETAIL_004,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""#open-positions""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_005,HX_CAND_JOB_DETAIL_005,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""#open-positions""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_006,HX_CAND_JOB_DETAIL_006,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp/login""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_007,HX_CAND_JOB_DETAIL_007,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp/register""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_008,HX_CAND_JOB_DETAIL_008,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_009,HX_CAND_JOB_DETAIL_009,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp/login?returnUrl=%2Fcareers%2Fhirex-demo-corp%2Fjobs%2Fjob-fs-04%2Fapply""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_JOB_DETAIL_010,HX_CAND_JOB_DETAIL_010,Candidate,/careers/:slug/jobs/:id,"page.locator('a[href=""/careers/hirex-demo-corp/login?returnUrl=%2Fcareers%2Fhirex-demo-corp%2Fjobs%2Fjob-fs-04%2Fapply""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_AUTH_001,HX_CAND_AUTH_001,Candidate,/login,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_AUTH_002,HX_CAND_AUTH_002,Candidate,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_AUTH_003,HX_CAND_AUTH_003,Candidate,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_AUTH_004,HX_CAND_AUTH_004,Candidate,/login,"page.get_by_role('button', name='Show password')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_005,HX_CAND_AUTH_005,Candidate,/login,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_CAND_AUTH_006,HX_CAND_AUTH_006,Candidate,/login,"page.get_by_role('button', name='Forgot password?')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_007,HX_CAND_AUTH_007,Candidate,/login,"page.get_by_role('button', name='Sign In')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_008,HX_CAND_AUTH_008,Candidate,/login,"page.get_by_role('button', name='Google')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_009,HX_CAND_AUTH_009,Candidate,/login,"page.get_by_role('button', name='Microsoft')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_010,HX_CAND_AUTH_010,Candidate,/login,"page.get_by_role('button', name='Create one')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_011,HX_CAND_AUTH_011,Candidate,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_AUTH_012,HX_CAND_AUTH_012,Candidate,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_AUTH_013,HX_CAND_AUTH_013,Candidate,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_AUTH_014,HX_CAND_AUTH_014,Candidate,/login,"page.get_by_role('button', name='Show password')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_015,HX_CAND_AUTH_015,Candidate,/login,"page.get_by_role('button', name='Create Account')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_016,HX_CAND_AUTH_016,Candidate,/login,"page.get_by_role('button', name='Google')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_017,HX_CAND_AUTH_017,Candidate,/login,"page.get_by_role('button', name='Microsoft')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_AUTH_018,HX_CAND_AUTH_018,Candidate,/login,"page.get_by_role('button', name='Sign in')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_001,HX_CAND_DASH_001,Candidate,/dashboard,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_002,HX_CAND_DASH_002,Candidate,/dashboard,"page.get_by_role('button', name='Close menu')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_003,HX_CAND_DASH_003,Candidate,/dashboard,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_004,HX_CAND_DASH_004,Candidate,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_005,HX_CAND_DASH_005,Candidate,/dashboard,"page.locator('a[href=""/applications""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_006,HX_CAND_DASH_006,Candidate,/dashboard,"page.locator('a[href=""/favorites""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_007,HX_CAND_DASH_007,Candidate,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_008,HX_CAND_DASH_008,Candidate,/dashboard,"page.locator('a[href=""/candidate/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_009,HX_CAND_DASH_009,Candidate,/dashboard,"page.locator('a[href=""/candidate/resume""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_010,HX_CAND_DASH_010,Candidate,/dashboard,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_011,HX_CAND_DASH_011,Candidate,/dashboard,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_012,HX_CAND_DASH_012,Candidate,/dashboard,"page.get_by_placeholder('Search jobs, companies, notes...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_DASH_013,HX_CAND_DASH_013,Candidate,/dashboard,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_014,HX_CAND_DASH_014,Candidate,/dashboard,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_015,HX_CAND_DASH_015,Candidate,/dashboard,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_016,HX_CAND_DASH_016,Candidate,/dashboard,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_017,HX_CAND_DASH_017,Candidate,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_018,HX_CAND_DASH_018,Candidate,/dashboard,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_019,HX_CAND_DASH_019,Candidate,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_020,HX_CAND_DASH_020,Candidate,/dashboard,"page.get_by_role('button', name='Explore Openings')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_021,HX_CAND_DASH_021,Candidate,/dashboard,"page.locator('a[href=""/applications""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_022,HX_CAND_DASH_022,Candidate,/dashboard,"page.locator('a[href=""/candidate/applications/app-rahul-innovatex-01?from=Dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_023,HX_CAND_DASH_023,Candidate,/dashboard,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_024,HX_CAND_DASH_024,Candidate,/dashboard,"page.get_by_role('button', name='View Profile')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_025,HX_CAND_DASH_025,Candidate,/dashboard,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_026,HX_CAND_DASH_026,Candidate,/dashboard,"page.locator('a[href=""/careers/hirex-demo-corp/jobs/job-fs-04/apply""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_027,HX_CAND_DASH_027,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_028,HX_CAND_DASH_028,Candidate,/dashboard,"page.locator('a[href=""/careers/hirex-demo-corp/jobs/job-fe-03/apply""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_029,HX_CAND_DASH_029,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_030,HX_CAND_DASH_030,Candidate,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_031,HX_CAND_DASH_031,Candidate,/dashboard,"page.get_by_role('button', name='Engineering')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_032,HX_CAND_DASH_032,Candidate,/dashboard,"page.get_by_role('button', name='Product')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_033,HX_CAND_DASH_033,Candidate,/dashboard,"page.get_by_role('button', name='Design')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_034,HX_CAND_DASH_034,Candidate,/dashboard,"page.get_by_role('button', name='Remote')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_035,HX_CAND_DASH_035,Candidate,/dashboard,"page.get_by_role('button', name='AI & Data')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_036,HX_CAND_DASH_036,Candidate,/dashboard,"page.get_by_role('button', name='Scroll left')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_037,HX_CAND_DASH_037,Candidate,/dashboard,"page.get_by_role('button', name='Scroll right')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_038,HX_CAND_DASH_038,Candidate,/dashboard,"page.locator('a[href=""/jobs/job-fs-04?from=Dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_039,HX_CAND_DASH_039,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_040,HX_CAND_DASH_040,Candidate,/dashboard,"page.locator('a[href=""/jobs/job-fe-03?from=Dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_041,HX_CAND_DASH_041,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_042,HX_CAND_DASH_042,Candidate,/dashboard,"page.locator('a[href=""/jobs/job-be-02?from=Dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_043,HX_CAND_DASH_043,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_DASH_044,HX_CAND_DASH_044,Candidate,/dashboard,"page.locator('a[href=""/jobs/job-swe-01?from=Dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_DASH_045,HX_CAND_DASH_045,Candidate,/dashboard,"page.get_by_role('button', name='Save job')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_001,HX_CAND_WIZARD_001,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_002,HX_CAND_WIZARD_002,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Close menu')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_003,HX_CAND_WIZARD_003,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_004,HX_CAND_WIZARD_004,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_005,HX_CAND_WIZARD_005,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/applications""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_006,HX_CAND_WIZARD_006,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/favorites""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_007,HX_CAND_WIZARD_007,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_008,HX_CAND_WIZARD_008,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/candidate/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_009,HX_CAND_WIZARD_009,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/candidate/resume""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_010,HX_CAND_WIZARD_010,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_011,HX_CAND_WIZARD_011,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_012,HX_CAND_WIZARD_012,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_placeholder('Search jobs, companies, notes...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_CAND_WIZARD_013,HX_CAND_WIZARD_013,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_014,HX_CAND_WIZARD_014,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_015,HX_CAND_WIZARD_015,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""/candidate/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_016,HX_CAND_WIZARD_016,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Back to Job Details')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_017,HX_CAND_WIZARD_017,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Reset draft')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_018,HX_CAND_WIZARD_018,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Scroll right')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_019,HX_CAND_WIZARD_019,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='1 Resume & Documents Current')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_020,HX_CAND_WIZARD_020,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='2 Personal Details Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_021,HX_CAND_WIZARD_021,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='3 Work Experience Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_022,HX_CAND_WIZARD_022,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='4 Education Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_023,HX_CAND_WIZARD_023,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='5 Job Questions Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_024,HX_CAND_WIZARD_024,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='6 Additional Information Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_025,HX_CAND_WIZARD_025,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='7 Review & Submit Upcoming')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_026,HX_CAND_WIZARD_026,Candidate,/careers/:slug/jobs/:id/apply,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_CAND_WIZARD_027,HX_CAND_WIZARD_027,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""https://storage.hire.zobay.in/candidates/usr-rahul-verma-01/resumes/1792561686836-manual-automation-testing-resume-3-years-experience.pdf""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_028,HX_CAND_WIZARD_028,Candidate,/careers/:slug/jobs/:id/apply,"page.locator('a[href=""http://localhost:3001/uploads/placeholder-resume.pdf""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_CAND_WIZARD_029,HX_CAND_WIZARD_029,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Re-apply auto-fill')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_030,HX_CAND_WIZARD_030,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Back')",Role,Unique (Verified),High,css=button
+LOC_HX_CAND_WIZARD_031,HX_CAND_WIZARD_031,Candidate,/careers/:slug/jobs/:id/apply,"page.get_by_role('button', name='Continue')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_001,HX_REC_AUTH_001,Recruiter,/login,"page.locator('a[href=""/""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_AUTH_002,HX_REC_AUTH_002,Recruiter,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_AUTH_003,HX_REC_AUTH_003,Recruiter,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_AUTH_004,HX_REC_AUTH_004,Recruiter,/login,"page.get_by_role('button', name='Show password')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_005,HX_REC_AUTH_005,Recruiter,/login,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_REC_AUTH_006,HX_REC_AUTH_006,Recruiter,/login,"page.get_by_role('button', name='Forgot password?')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_007,HX_REC_AUTH_007,Recruiter,/login,"page.get_by_role('button', name='Sign In')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_008,HX_REC_AUTH_008,Recruiter,/login,"page.get_by_role('button', name='Google')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_009,HX_REC_AUTH_009,Recruiter,/login,"page.get_by_role('button', name='Microsoft')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_AUTH_010,HX_REC_AUTH_010,Recruiter,/login,"page.locator('a[href=""/signup""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_001,HX_REC_DASH_001,Recruiter,/dashboard,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_002,HX_REC_DASH_002,Recruiter,/dashboard,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_003,HX_REC_DASH_003,Recruiter,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_004,HX_REC_DASH_004,Recruiter,/dashboard,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_005,HX_REC_DASH_005,Recruiter,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_006,HX_REC_DASH_006,Recruiter,/dashboard,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_007,HX_REC_DASH_007,Recruiter,/dashboard,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_008,HX_REC_DASH_008,Recruiter,/dashboard,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_009,HX_REC_DASH_009,Recruiter,/dashboard,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_010,HX_REC_DASH_010,Recruiter,/dashboard,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_011,HX_REC_DASH_011,Recruiter,/dashboard,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_012,HX_REC_DASH_012,Recruiter,/dashboard,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_013,HX_REC_DASH_013,Recruiter,/dashboard,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_014,HX_REC_DASH_014,Recruiter,/dashboard,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_015,HX_REC_DASH_015,Recruiter,/dashboard,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_016,HX_REC_DASH_016,Recruiter,/dashboard,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_017,HX_REC_DASH_017,Recruiter,/dashboard,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_018,HX_REC_DASH_018,Recruiter,/dashboard,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_019,HX_REC_DASH_019,Recruiter,/dashboard,"page.locator('a[href=""https://dev.candidate.hire.zobay.in/careers/hirex-demo-corp""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_020,HX_REC_DASH_020,Recruiter,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_021,HX_REC_DASH_021,Recruiter,/dashboard,"page.locator('a[href=""/jobs/new""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_022,HX_REC_DASH_022,Recruiter,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_023,HX_REC_DASH_023,Recruiter,/dashboard,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_024,HX_REC_DASH_024,Recruiter,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_025,HX_REC_DASH_025,Recruiter,/dashboard,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_026,HX_REC_DASH_026,Recruiter,/dashboard,"page.get_by_role('button', name='6 Months')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_027,HX_REC_DASH_027,Recruiter,/dashboard,"page.get_by_role('button', name='30 Days')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_028,HX_REC_DASH_028,Recruiter,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_029,HX_REC_DASH_029,Recruiter,/dashboard,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_030,HX_REC_DASH_030,Recruiter,/dashboard,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_DASH_031,HX_REC_DASH_031,Recruiter,/dashboard,"page.get_by_role('button', name='All (4)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_032,HX_REC_DASH_032,Recruiter,/dashboard,"page.get_by_role('button', name='Open (4)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_033,HX_REC_DASH_033,Recruiter,/dashboard,"page.get_by_role('button', name='Closed (0)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_DASH_034,HX_REC_DASH_034,Recruiter,/dashboard,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_001,HX_REC_JOBS_001,Recruiter,/jobs,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_002,HX_REC_JOBS_002,Recruiter,/jobs,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_003,HX_REC_JOBS_003,Recruiter,/jobs,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_004,HX_REC_JOBS_004,Recruiter,/jobs,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_005,HX_REC_JOBS_005,Recruiter,/jobs,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_006,HX_REC_JOBS_006,Recruiter,/jobs,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_007,HX_REC_JOBS_007,Recruiter,/jobs,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_008,HX_REC_JOBS_008,Recruiter,/jobs,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_009,HX_REC_JOBS_009,Recruiter,/jobs,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_010,HX_REC_JOBS_010,Recruiter,/jobs,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_011,HX_REC_JOBS_011,Recruiter,/jobs,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_012,HX_REC_JOBS_012,Recruiter,/jobs,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_013,HX_REC_JOBS_013,Recruiter,/jobs,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_014,HX_REC_JOBS_014,Recruiter,/jobs,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_015,HX_REC_JOBS_015,Recruiter,/jobs,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_016,HX_REC_JOBS_016,Recruiter,/jobs,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_017,HX_REC_JOBS_017,Recruiter,/jobs,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_018,HX_REC_JOBS_018,Recruiter,/jobs,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_019,HX_REC_JOBS_019,Recruiter,/jobs,"page.locator('a[href=""/jobs/new""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_020,HX_REC_JOBS_020,Recruiter,/jobs,"page.get_by_placeholder('Search by job title, location, or type...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_JOBS_021,HX_REC_JOBS_021,Recruiter,/jobs,"page.get_by_role('button', name='All (4)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_022,HX_REC_JOBS_022,Recruiter,/jobs,"page.get_by_role('button', name='Active (4)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_023,HX_REC_JOBS_023,Recruiter,/jobs,"page.get_by_role('button', name='Closed (0)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_024,HX_REC_JOBS_024,Recruiter,/jobs,"page.get_by_role('button', name='Grid view')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_025,HX_REC_JOBS_025,Recruiter,/jobs,"page.get_by_role('button', name='Table view')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_026,HX_REC_JOBS_026,Recruiter,/jobs,page.locator('button'),Tag Fallback,Scoped,Medium,css=button
+LOC_HX_REC_JOBS_027,HX_REC_JOBS_027,Recruiter,/jobs,"page.locator('a[href=""/jobs/job-fs-04""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_028,HX_REC_JOBS_028,Recruiter,/jobs,"page.locator('a[href=""/applicants?jobId=job-fs-04""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_029,HX_REC_JOBS_029,Recruiter,/jobs,"page.get_by_role('button', name='Share')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_030,HX_REC_JOBS_030,Recruiter,/jobs,page.locator('button'),Tag Fallback,Scoped,Medium,css=button
+LOC_HX_REC_JOBS_031,HX_REC_JOBS_031,Recruiter,/jobs,"page.locator('a[href=""/jobs/job-fe-03""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_032,HX_REC_JOBS_032,Recruiter,/jobs,"page.locator('a[href=""/applicants?jobId=job-fe-03""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_033,HX_REC_JOBS_033,Recruiter,/jobs,"page.get_by_role('button', name='Share')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_034,HX_REC_JOBS_034,Recruiter,/jobs,page.locator('button'),Tag Fallback,Scoped,Medium,css=button
+LOC_HX_REC_JOBS_035,HX_REC_JOBS_035,Recruiter,/jobs,"page.locator('a[href=""/jobs/job-be-02""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_036,HX_REC_JOBS_036,Recruiter,/jobs,"page.locator('a[href=""/applicants?jobId=job-be-02""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_037,HX_REC_JOBS_037,Recruiter,/jobs,"page.get_by_role('button', name='Share')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOBS_038,HX_REC_JOBS_038,Recruiter,/jobs,page.locator('button'),Tag Fallback,Scoped,Medium,css=button
+LOC_HX_REC_JOBS_039,HX_REC_JOBS_039,Recruiter,/jobs,"page.locator('a[href=""/jobs/job-swe-01""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_040,HX_REC_JOBS_040,Recruiter,/jobs,"page.locator('a[href=""/applicants?jobId=job-swe-01""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOBS_041,HX_REC_JOBS_041,Recruiter,/jobs,"page.get_by_role('button', name='Share')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_001,HX_REC_JOB_CREATE_001,Recruiter,/jobs/new,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_002,HX_REC_JOB_CREATE_002,Recruiter,/jobs/new,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_003,HX_REC_JOB_CREATE_003,Recruiter,/jobs/new,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_004,HX_REC_JOB_CREATE_004,Recruiter,/jobs/new,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_005,HX_REC_JOB_CREATE_005,Recruiter,/jobs/new,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_006,HX_REC_JOB_CREATE_006,Recruiter,/jobs/new,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_007,HX_REC_JOB_CREATE_007,Recruiter,/jobs/new,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_008,HX_REC_JOB_CREATE_008,Recruiter,/jobs/new,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_009,HX_REC_JOB_CREATE_009,Recruiter,/jobs/new,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_010,HX_REC_JOB_CREATE_010,Recruiter,/jobs/new,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_011,HX_REC_JOB_CREATE_011,Recruiter,/jobs/new,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_012,HX_REC_JOB_CREATE_012,Recruiter,/jobs/new,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_013,HX_REC_JOB_CREATE_013,Recruiter,/jobs/new,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_014,HX_REC_JOB_CREATE_014,Recruiter,/jobs/new,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_015,HX_REC_JOB_CREATE_015,Recruiter,/jobs/new,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_016,HX_REC_JOB_CREATE_016,Recruiter,/jobs/new,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_017,HX_REC_JOB_CREATE_017,Recruiter,/jobs/new,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_018,HX_REC_JOB_CREATE_018,Recruiter,/jobs/new,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_019,HX_REC_JOB_CREATE_019,Recruiter,/jobs/new,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_020,HX_REC_JOB_CREATE_020,Recruiter,/jobs/new,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_021,HX_REC_JOB_CREATE_021,Recruiter,/jobs/new,page.get_by_placeholder('e.g. Senior Full Stack Engineer'),Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_JOB_CREATE_022,HX_REC_JOB_CREATE_022,Recruiter,/jobs/new,"page.get_by_placeholder('e.g. Bengaluru, India (or Remote)')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_JOB_CREATE_023,HX_REC_JOB_CREATE_023,Recruiter,/jobs/new,"page.get_by_role('button', name='Select Mode')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_024,HX_REC_JOB_CREATE_024,Recruiter,/jobs/new,"page.get_by_role('button', name='Select Type')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_025,HX_REC_JOB_CREATE_025,Recruiter,/jobs/new,"page.get_by_role('button', name='Select Level')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_026,HX_REC_JOB_CREATE_026,Recruiter,/jobs/new,page.get_by_placeholder('1'),Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_JOB_CREATE_027,HX_REC_JOB_CREATE_027,Recruiter,/jobs/new,page.get_by_placeholder('e.g. ₹18–28 LPA or Competitive'),Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_JOB_CREATE_028,HX_REC_JOB_CREATE_028,Recruiter,/jobs/new,"page.get_by_role('button', name='Select Notice Period')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_JOB_CREATE_029,HX_REC_JOB_CREATE_029,Recruiter,/jobs/new,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_JOB_CREATE_030,HX_REC_JOB_CREATE_030,Recruiter,/jobs/new,"page.get_by_role('button', name='Next: Skills & Description')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_001,HX_REC_PIPELINE_001,Recruiter,/applications,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_002,HX_REC_PIPELINE_002,Recruiter,/applications,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_003,HX_REC_PIPELINE_003,Recruiter,/applications,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_004,HX_REC_PIPELINE_004,Recruiter,/applications,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_005,HX_REC_PIPELINE_005,Recruiter,/applications,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_006,HX_REC_PIPELINE_006,Recruiter,/applications,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_007,HX_REC_PIPELINE_007,Recruiter,/applications,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_008,HX_REC_PIPELINE_008,Recruiter,/applications,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_009,HX_REC_PIPELINE_009,Recruiter,/applications,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_010,HX_REC_PIPELINE_010,Recruiter,/applications,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_011,HX_REC_PIPELINE_011,Recruiter,/applications,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_012,HX_REC_PIPELINE_012,Recruiter,/applications,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_013,HX_REC_PIPELINE_013,Recruiter,/applications,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_014,HX_REC_PIPELINE_014,Recruiter,/applications,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_015,HX_REC_PIPELINE_015,Recruiter,/applications,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_PIPELINE_016,HX_REC_PIPELINE_016,Recruiter,/applications,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_017,HX_REC_PIPELINE_017,Recruiter,/applications,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_018,HX_REC_PIPELINE_018,Recruiter,/applications,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_019,HX_REC_PIPELINE_019,Recruiter,/applications,"page.get_by_placeholder('Search candidate by name, email, or role...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_PIPELINE_020,HX_REC_PIPELINE_020,Recruiter,/applications,page.get_by_text('Filter by job'),Text,Unique (Verified),Medium,css=button
+LOC_HX_REC_PIPELINE_021,HX_REC_PIPELINE_021,Recruiter,/applications,page.get_by_text('Filter by source'),Text,Unique (Verified),Medium,css=button
+LOC_HX_REC_PIPELINE_022,HX_REC_PIPELINE_022,Recruiter,/applications,"page.get_by_role('button', name='Table view')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_023,HX_REC_PIPELINE_023,Recruiter,/applications,"page.get_by_role('button', name='Grid view')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_024,HX_REC_PIPELINE_024,Recruiter,/applications,"page.get_by_role('button', name='All Candidates (1)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_PIPELINE_025,HX_REC_PIPELINE_025,Recruiter,/applications,"page.get_by_role('button', name='Interview 1')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_001,HX_REC_INTERVIEWS_001,Recruiter,/interviews,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_002,HX_REC_INTERVIEWS_002,Recruiter,/interviews,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_003,HX_REC_INTERVIEWS_003,Recruiter,/interviews,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_004,HX_REC_INTERVIEWS_004,Recruiter,/interviews,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_005,HX_REC_INTERVIEWS_005,Recruiter,/interviews,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_006,HX_REC_INTERVIEWS_006,Recruiter,/interviews,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_007,HX_REC_INTERVIEWS_007,Recruiter,/interviews,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_008,HX_REC_INTERVIEWS_008,Recruiter,/interviews,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_009,HX_REC_INTERVIEWS_009,Recruiter,/interviews,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_010,HX_REC_INTERVIEWS_010,Recruiter,/interviews,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_011,HX_REC_INTERVIEWS_011,Recruiter,/interviews,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_012,HX_REC_INTERVIEWS_012,Recruiter,/interviews,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_013,HX_REC_INTERVIEWS_013,Recruiter,/interviews,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_014,HX_REC_INTERVIEWS_014,Recruiter,/interviews,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_015,HX_REC_INTERVIEWS_015,Recruiter,/interviews,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_016,HX_REC_INTERVIEWS_016,Recruiter,/interviews,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_017,HX_REC_INTERVIEWS_017,Recruiter,/interviews,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_018,HX_REC_INTERVIEWS_018,Recruiter,/interviews,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_019,HX_REC_INTERVIEWS_019,Recruiter,/interviews,"page.get_by_role('button', name='Invite Interviewer')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_020,HX_REC_INTERVIEWS_020,Recruiter,/interviews,"page.get_by_placeholder('Search by candidate, interviewer, or role...')",Placeholder,Unique (Verified),High,css=input
+LOC_HX_REC_INTERVIEWS_021,HX_REC_INTERVIEWS_021,Recruiter,/interviews,"page.get_by_role('button', name='All (1)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_022,HX_REC_INTERVIEWS_022,Recruiter,/interviews,"page.get_by_role('button', name='Active (1)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_023,HX_REC_INTERVIEWS_023,Recruiter,/interviews,"page.get_by_role('button', name='Past (0)')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_INTERVIEWS_024,HX_REC_INTERVIEWS_024,Recruiter,/interviews,"page.locator('a[href=""https://meet.google.com/hirex-v0-demo""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_INTERVIEWS_025,HX_REC_INTERVIEWS_025,Recruiter,/interviews,"page.get_by_role('button', name='Manage')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_001,HX_REC_TEAM_001,Recruiter,/team,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_002,HX_REC_TEAM_002,Recruiter,/team,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_003,HX_REC_TEAM_003,Recruiter,/team,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_004,HX_REC_TEAM_004,Recruiter,/team,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_005,HX_REC_TEAM_005,Recruiter,/team,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_006,HX_REC_TEAM_006,Recruiter,/team,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_007,HX_REC_TEAM_007,Recruiter,/team,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_008,HX_REC_TEAM_008,Recruiter,/team,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_009,HX_REC_TEAM_009,Recruiter,/team,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_010,HX_REC_TEAM_010,Recruiter,/team,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_011,HX_REC_TEAM_011,Recruiter,/team,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_012,HX_REC_TEAM_012,Recruiter,/team,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_013,HX_REC_TEAM_013,Recruiter,/team,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_014,HX_REC_TEAM_014,Recruiter,/team,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_015,HX_REC_TEAM_015,Recruiter,/team,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_TEAM_016,HX_REC_TEAM_016,Recruiter,/team,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_017,HX_REC_TEAM_017,Recruiter,/team,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_018,HX_REC_TEAM_018,Recruiter,/team,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_019,HX_REC_TEAM_019,Recruiter,/team,"page.get_by_role('button', name='Invite Interviewer')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_020,HX_REC_TEAM_020,Recruiter,/team,"page.get_by_role('button', name='Invite Team Member')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_021,HX_REC_TEAM_021,Recruiter,/team,"page.get_by_role('button', name='Recruiting Team 3')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_022,HX_REC_TEAM_022,Recruiter,/team,"page.get_by_role('button', name='Interviewer Pool 1')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_023,HX_REC_TEAM_023,Recruiter,/team,"page.get_by_role('button', name='Refresh')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_024,HX_REC_TEAM_024,Recruiter,/team,"page.get_by_role('button', name='Actions')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_025,HX_REC_TEAM_025,Recruiter,/team,"page.get_by_role('button', name='Actions')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_TEAM_026,HX_REC_TEAM_026,Recruiter,/team,"page.get_by_role('button', name='Actions')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_001,HX_REC_SETTINGS_001,Recruiter,/settings,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_002,HX_REC_SETTINGS_002,Recruiter,/settings,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_003,HX_REC_SETTINGS_003,Recruiter,/settings,"page.locator('a[href=""/jobs""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_004,HX_REC_SETTINGS_004,Recruiter,/settings,"page.locator('a[href=""/applicants""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_005,HX_REC_SETTINGS_005,Recruiter,/settings,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_006,HX_REC_SETTINGS_006,Recruiter,/settings,"page.locator('a[href=""/team""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_007,HX_REC_SETTINGS_007,Recruiter,/settings,"page.locator('a[href=""/documents""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_008,HX_REC_SETTINGS_008,Recruiter,/settings,"page.locator('a[href=""/career-page""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_009,HX_REC_SETTINGS_009,Recruiter,/settings,"page.locator('a[href=""/reports""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_010,HX_REC_SETTINGS_010,Recruiter,/settings,"page.locator('a[href=""/job-portals""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_011,HX_REC_SETTINGS_011,Recruiter,/settings,"page.locator('a[href=""/hires""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_012,HX_REC_SETTINGS_012,Recruiter,/settings,"page.locator('a[href=""/settings""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_013,HX_REC_SETTINGS_013,Recruiter,/settings,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_014,HX_REC_SETTINGS_014,Recruiter,/settings,"page.get_by_role('button', name='Search candidates, open jobs, pipeline notes... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_015,HX_REC_SETTINGS_015,Recruiter,/settings,"page.locator('a[href=""/settings?tab=company""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_REC_SETTINGS_016,HX_REC_SETTINGS_016,Recruiter,/settings,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_017,HX_REC_SETTINGS_017,Recruiter,/settings,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_018,HX_REC_SETTINGS_018,Recruiter,/settings,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_019,HX_REC_SETTINGS_019,Recruiter,/settings,"page.get_by_role('button', name='Personal Profile')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_020,HX_REC_SETTINGS_020,Recruiter,/settings,"page.get_by_role('button', name='Company Profile')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_021,HX_REC_SETTINGS_021,Recruiter,/settings,"page.get_by_role('button', name='Hiring Pipeline')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_022,HX_REC_SETTINGS_022,Recruiter,/settings,"page.get_by_role('button', name='Application Policies')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_023,HX_REC_SETTINGS_023,Recruiter,/settings,"page.get_by_role('button', name='Document Requirements')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_024,HX_REC_SETTINGS_024,Recruiter,/settings,"page.get_by_role('button', name='Email Templates')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_025,HX_REC_SETTINGS_025,Recruiter,/settings,"page.get_by_role('button', name='Team & Roles')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_026,HX_REC_SETTINGS_026,Recruiter,/settings,"page.get_by_role('button', name='API Keys')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_027,HX_REC_SETTINGS_027,Recruiter,/settings,"page.get_by_role('button', name='DR')",Role,Unique (Verified),High,css=button
+LOC_HX_REC_SETTINGS_028,HX_REC_SETTINGS_028,Recruiter,/settings,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_REC_SETTINGS_029,HX_REC_SETTINGS_029,Recruiter,/settings,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_REC_SETTINGS_030,HX_REC_SETTINGS_030,Recruiter,/settings,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_REC_SETTINGS_031,HX_REC_SETTINGS_031,Recruiter,/settings,"page.get_by_role('button', name='Save Personal Profile')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_AUTH_001,HX_INT_AUTH_001,Interviewer,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_INT_AUTH_002,HX_INT_AUTH_002,Interviewer,/login,page.get_by_placeholder(' '),Placeholder,Unique (Verified),High,css=input
+LOC_HX_INT_AUTH_003,HX_INT_AUTH_003,Interviewer,/login,"page.get_by_role('button', name='Show password')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_AUTH_004,HX_INT_AUTH_004,Interviewer,/login,page.locator('input'),Tag Fallback,Scoped,Medium,css=input
+LOC_HX_INT_AUTH_005,HX_INT_AUTH_005,Interviewer,/login,"page.locator('a[href=""/forgot-password""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_AUTH_006,HX_INT_AUTH_006,Interviewer,/login,"page.get_by_role('button', name='Sign In')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_AUTH_007,HX_INT_AUTH_007,Interviewer,/login,"page.locator('a[href=""/register""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_001,HX_INT_DASH_001,Interviewer,/dashboard,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_002,HX_INT_DASH_002,Interviewer,/dashboard,"page.locator('a[href=""/dashboard""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_003,HX_INT_DASH_003,Interviewer,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_004,HX_INT_DASH_004,Interviewer,/dashboard,"page.locator('a[href=""/history""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_005,HX_INT_DASH_005,Interviewer,/dashboard,"page.locator('a[href=""/profile?tab=availability""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_006,HX_INT_DASH_006,Interviewer,/dashboard,"page.locator('a[href=""/profile""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_007,HX_INT_DASH_007,Interviewer,/dashboard,"page.get_by_role('button', name='Open navigation menu')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_008,HX_INT_DASH_008,Interviewer,/dashboard,"page.get_by_role('button', name='Search candidates, interviews, scorecards... ⌘K')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_009,HX_INT_DASH_009,Interviewer,/dashboard,"page.get_by_role('button', name='Search')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_010,HX_INT_DASH_010,Interviewer,/dashboard,"page.get_by_role('button', name='Notifications')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_011,HX_INT_DASH_011,Interviewer,/dashboard,"page.get_by_role('button', name='RS')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_012,HX_INT_DASH_012,Interviewer,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_013,HX_INT_DASH_013,Interviewer,/dashboard,"page.locator('a[href=""/profile?tab=availability""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_014,HX_INT_DASH_014,Interviewer,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_015,HX_INT_DASH_015,Interviewer,/dashboard,"page.get_by_role('button', name='Upcoming (0)')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_016,HX_INT_DASH_016,Interviewer,/dashboard,"page.get_by_role('button', name='Today (0)')",Role,Unique (Verified),High,css=button
+LOC_HX_INT_DASH_017,HX_INT_DASH_017,Interviewer,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_018,HX_INT_DASH_018,Interviewer,/dashboard,"page.locator('a[href=""/interviews""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_019,HX_INT_DASH_019,Interviewer,/dashboard,"page.locator('a[href=""/profile?tab=availability""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_020,HX_INT_DASH_020,Interviewer,/dashboard,"page.locator('a[href=""/history""]')",CSS Link,Unique (Verified),Medium,css=a
+LOC_HX_INT_DASH_021,HX_INT_DASH_021,Interviewer,/dashboard,"page.locator('a[href=""/profile""]')",CSS Link,Unique (Verified),Medium,css=a

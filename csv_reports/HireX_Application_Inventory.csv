@@ -1,0 +1,21 @@
+﻿Portal,Route,Module,Feature,Role,API Endpoint,Risk / Vulnerability Vector,Tested
+Candidate,/careers/:slug,Job Board,Public requisition discovery & search,Public / Guest,"GET /careers/:slug, GET /jobs","High: PII leakage, sensitive corporate credential exposure",YES - 100%
+Candidate,/careers/:slug/jobs/:id,Job Details,"Requirements, salary & JD inspection",Public / Candidate,GET /jobs/:id,High: Unsanitized company configuration attributes exposure,YES - 100%
+Candidate,/careers/:slug/jobs/:id/apply,Application Wizard,"Multi-step resume, screening, draft reset",Candidate / Guest,"POST /applications, POST /documents/upload","High: File upload bypass, draft wiping without confirmation",YES - 100%
+Candidate,/login,Authentication,Candidate email + password sign-in,Candidate,POST /api/auth/sign-in/email,"Medium: Brute-force, credential stuffing, rate-limiting",YES - 100%
+Candidate,/register,Self-Registration,Candidate account creation,Public,POST /api/auth/sign-up/email,"Medium: Duplicate registration, unvalidated email injection",YES - 100%
+Candidate,/dashboard,Candidate Hub,Application stage tracker & offer acceptance,Candidate,"GET /candidate/applications, GET /candidate/offers","High: BOLA/IDOR on candidate dossiers, status tampering",YES - 100%
+Candidate,/profile,Profile Management,"Bio, resumes, education, experience",Candidate,"GET /candidate/profile, PUT /candidate/profile",Medium: Stored XSS in biography/work history fields,YES - 100%
+Recruiter,/login,Authentication,Recruiter tenant sign-in,Recruiter Admin/Member,POST /api/auth/sign-in/email,"Critical: Cross-tenant account takeover, privilege escalation",YES - 100%
+Recruiter,/dashboard,Recruiter Overview,"Pipeline metrics, active jobs, recent candidates",Recruiter Admin/Member,"GET /recruiter/me, GET /recruiter/dashboard/stats",High: Multi-tenant data leakage between organizations,YES - 100%
+Recruiter,/jobs,Job Management,"Job list, filters, status toggles (Draft, Published)",Recruiter Admin/Member,GET /recruiter/jobs,"High: Unauthorized job archiving, bypass recruiter assignment",YES - 100%
+Recruiter,/jobs/new,Job Creation,"Requisition creation wizard, screening configuration",Recruiter Admin/Member,POST /recruiter/jobs,"High: Malformed schema injection, missing mandatory validations",YES - 100%
+Recruiter,/applications,Candidate Pipeline,Kanban board & candidate dossier stage moves,Recruiter Admin/Member,"GET /recruiter/applications, PATCH /stage",Critical: Invalid state machine transitions (e.g. Draft -> Hired),YES - 100%
+Recruiter,/interviews,Scheduling,"Interview schedule, calendar, panel assignment",Recruiter Admin/Member,"GET /recruiter/interviews, POST /recruiter/interviews","High: Double-booking panel interviewers, invalid interview times",YES - 100%
+Recruiter,/team,Team & RBAC,Invite recruiters & manage role assignments,Recruiter Admin,"GET /recruiter/team, POST /recruiter/team/invite","Critical: Privilege escalation to ADMIN, 500 crash on invalid roles",YES - 100%
+Recruiter,/team/interviewers,Interviewer Management,Invite & assign technical interviewers,Recruiter Admin,POST /recruiter/interviewers/invite,"High: 500 crash on missing payload fields, ghost interviewer accounts",YES - 100%
+Recruiter,/settings,Tenant Settings,"Company profile, SMTP, API keys, e-signature",Recruiter Admin,"GET /recruiter/company, PATCH /recruiter/company","Critical: Unvalidated SMTP credentials, digital signature leakage",YES - 100%
+Interviewer,/login,Authentication,Interviewer credentials & returnUrl redirection,Interviewer,"POST /api/auth/sign-in/email, POST /auth/interviewer/login","High: Open redirection via returnUrl, session hijacking",YES - 100%
+Interviewer,/dashboard,Evaluation Queue,List of assigned technical rounds,Interviewer,GET /interviewer/interviews,High: IDOR access to unassigned candidate interviews,YES - 100%
+Interviewer,/interviews/:id,Interview Dossier,Candidate resume & question rubric review,Interviewer,GET /interviewer/interviews/:id,"High: PII disclosure, tampering with candidate screening scores",YES - 100%
+Interviewer,/interviews/:id/feedback,Scorecard Submission,"Structured ratings, recommendation & notes",Interviewer,POST /interviewer/interviews/:id/feedback,"Critical: Unhandled 500 server crash on unready state, score tampering",YES - 100%

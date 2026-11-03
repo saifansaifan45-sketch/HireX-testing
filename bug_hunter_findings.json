@@ -1,0 +1,114 @@
+[
+  {
+    "probe_id": "PR-01",
+    "title": "Public /jobs Sensitive Data Exposure Check",
+    "result": "Status 200",
+    "defect_candidate": false,
+    "details": "Recruiter object keys in public response: ['id', 'userId', 'companyId', 'role', 'status', 'inviteToken', 'inviteExpiry', 'createdAt', 'updatedAt', 'requiredDocs', 'defaultRounds', 'offerTemplate', 'rejectionTemplate', 'reapplicationCooldownDays', 'employeeTenureLockDays', 'digitalSignatureUrl']"
+  },
+  {
+    "probe_id": "PR-02",
+    "title": "Unauthenticated GET /search?q=admin Access",
+    "result": "Status 200",
+    "defect_candidate": true,
+    "details": "Status: 200, Response: {\"query\":\"admin\",\"results\":[]}"
+  },
+  {
+    "probe_id": "PR-03",
+    "title": "Malformed JSON Handling on Sign-In",
+    "result": "Status 400",
+    "defect_candidate": false,
+    "details": "Status: 400, Response: {\"message\":\"Expected property name or '}' in JSON at position 1 (line 1 column 2)\",\"error\":\"Bad Request\",\"statusCode\":400}"
+  },
+  {
+    "probe_id": "PR-04",
+    "title": "PATCH /applications/:id/status with Invalid Enum Value",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot PATCH /applications/00000000-0000-0000-0000-000000000000/status\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-05",
+    "title": "PATCH /applications/:id/status Revert to APPLIED (FR-010)",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot PATCH /applications/00000000-0000-0000-0000-000000000000/status\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-06",
+    "title": "Candidate Privilege Escalation on /applications/:id/status",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot PATCH /applications/00000000-0000-0000-0000-000000000000/status\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-07",
+    "title": "POST /public/guest-resume without Multipart File",
+    "result": "Status 400",
+    "defect_candidate": false,
+    "details": "Status: 400, Response: {\"message\":\"Resume file is required\",\"error\":\"Bad Request\",\"statusCode\":400}"
+  },
+  {
+    "probe_id": "PR-08",
+    "title": "Unsigned Webhook Ingestion (NFR-003)",
+    "result": "Status 401",
+    "defect_candidate": false,
+    "details": "Status: 401, Response: {\"message\":\"Invalid or missing x-schedular-signature\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+  },
+  {
+    "probe_id": "PR-09",
+    "title": "Forged Signature Webhook Ingestion",
+    "result": "Status 401",
+    "defect_candidate": false,
+    "details": "Status: 401, Response: {\"message\":\"Invalid or missing x-schedular-signature\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+  },
+  {
+    "probe_id": "PR-10",
+    "title": "POST /interviews/booking with Non-existent Slot ID",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot POST /interviews/booking\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-11",
+    "title": "POST /interviews/availability with Negative dayOfWeek (-1)",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot POST /interviews/availability\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-12",
+    "title": "POST /interviews/availability End Time Before Start Time",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot POST /interviews/availability\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-13",
+    "title": "POST /candidate/offers/:id/accept with Non-existent Offer",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot POST /candidate/offers/00000000-0000-0000-0000-000000000000/accept\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-14",
+    "title": "PATCH /recruiters/documents/:id/reject without Reason (FR-019)",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot PATCH /recruiters/documents/00000000-0000-0000-0000-000000000000/reject\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-15",
+    "title": "POST /recruiters/jobs with Negative Salary",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot POST /recruiters/jobs\",\"error\":\"Not Found\",\"statusCode\":404}"
+  },
+  {
+    "probe_id": "PR-16",
+    "title": "DELETE /jobs (Unimplemented Method)",
+    "result": "Status 404",
+    "defect_candidate": false,
+    "details": "Status: 404, Response: {\"message\":\"Cannot DELETE /jobs\",\"error\":\"Not Found\",\"statusCode\":404}"
+  }
+]

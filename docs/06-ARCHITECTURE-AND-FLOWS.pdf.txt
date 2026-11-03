@@ -1,0 +1,167 @@
+
+--- Page 1 ---
+HireX — Architecture, Workflows & Data Flows
+Document ID: HXP-HANDOVER-06
+Platform Version: HireX V0 / Enterprise Multi-Tenant Architecture
+Target Audience: Architects, Senior Developers, Systems Engineers
+Last Updated: October 2026
+1. End-to-End Recruitment Sequence Flow
+Cloudflare R2 BucketSchedular (MeetX)PostgreSQL (Prisma)HireX Backend (:3001)
+Cloudflare R2 BucketSchedular (MeetX)PostgreSQL (Prisma)HireX Backend (:3001)
+Recruiter (:3002) Candidate (:3000) Interviewer (:3003)
+POST /recruiters/jobs (with custom Form Schema)
+1
+Create Job + ApplicationForm (JSONB)
+2
+Job Created
+3
+201 Published
+4
+GET /jobs/:id/application-form
+5
+Form Schema (Sections & Questions)
+6
+POST /applications (Answers + Resume)
+7
+Upload Resume File
+8
+Calculate aiScore (Groq / TF-IDF)
+9
+Create Application (status: APPLIED, aiScore)
+10
+Application Created
+11
+201 Applied Successfully
+12
+PATCH /applications/:id/status { status: 'SCREENING' }
+13
+Update Application status
+14
+POST /interviews/availability (Weekly Schedule)
+15
+Save InterviewAvailability
+16
+POST /interviews/slots/generate
+17
+Compute & Store Available InterviewSlots
+18
+POST /interviews/booking { slotId }
+19
+Lock slot (Atomic Transaction)
+20
+POST /meetings (host: Interviewer, attendee: Candidate)
+21
+Return meetingId, hostJoinUrl, candidateJoinUrl
+22
+Update Interview (CONFIRMED, meetingId, URLs)
+23
+200 Booking Confirmed + Calendar (.ics)
+24
+Join Call (via hostJoinUrl)
+25
+Join Call (via candidateJoinUrl)
+26
+Webhook POST /webhooks/schedular (event: meeting.ended)
+27
+Mark Interview COMPLETED
+28
+POST /interviews/:id/feedback (Ratings, Cultural Fit: 5, Rec: HIRE)
+29
+Create InterviewFeedback record
+30
+POST /recruiters/offers/generate (Salary, Expiry: 7d)
+31
+Generate & Save Branded PDF Offer Letter
+32
+Create Offer (status: EXTENDED, expiresAt)
+33
+POST /candidate/offers/:id/accept (Digital Signature)
+34
+Update Offer (ACCEPTED) + Auto-Shift Application to DOCUMENT_VERIFICATION
+35
+POST /candidate/documents/upload (Multi-file ID & Degrees)
+36
+Stream files to R2 bucket
+37
+Create Document + DocumentFile records (status: PENDING)
+38
+PATCH /recruiters/documents/:id/verify
+39
+Update Document (status: VERIFIED, verifiedBy, verifiedAt)
+40
+PATCH /applications/:id/status { status: 'HIRED' }
+41
+Validate All Required Docs VERIFIED -> Transition to HIRED
+42
+200 Candidate Hired Successfully!
+43
+Recruiter (:3002) Candidate (:3000) Interviewer (:3003)
+--- Page 2 ---
+2. Dynamic Form Builder & Candidate Wizard Flow
+   RECRUITER BUILDER (/jobs/new)              CANDIDATE WIZARD (/apply/:id)
+   ┌───────────────────────────┐              ┌───────────────────────────┐
+   │ Define Sections & Fields  │              │ Fetch Schema via API      │
+   │ • Short Text, Multi-select│              │ GET /jobs/:id/app-form    │
+   │ • Numeric, File Upload    │              └─────────────┬─────────────┘
+   └─────────────┬─────────────┘                            │
+                 │                                          ▼
+                 ▼ (JSONB Serialization)      ┌───────────────────────────┐
+   ┌───────────────────────────┐              │ Step 1: Personal Profile  │
+   │ ApplicationForm (Schema)  │              │ • Autosaved to LocalStore │
+   │ ├── ApplicationSection    │              └─────────────┬─────────────┘
+   │ └── ApplicationQuestion   │                            │
+   └───────────────────────────┘                            ▼
+                                              ┌───────────────────────────┐
+                                              │ Step 2: Custom Questions  │
+                                              │ • Render dynamic inputs   │
+                                              │ • Mandatory field checks  │
+                                              └─────────────┬─────────────┘
+                                                            │
+                                                            ▼
+                                              ┌───────────────────────────┐
+                                              │ Step 3: Resume & Review   │
+                                              │ • Stream file to R2       │
+                                              │ • POST /applications      │
+                                              └───────────────────────────┘
+3. Schedular (MeetX) Webhook State Synchronization Flow
+   SCHEDULAR (MEETX) PLATFORM                     HIREX BACKEND API
+   ┌───────────────────────────┐              ┌───────────────────────────┐
+   │ Video Session Terminates  │              │ POST /webhooks/schedular  │
+   │ • Host & Attendee Leave   │─────────────►│ • Validate HMAC Signature │
+   └───────────────────────────┘              │ • Find matching meetingId │
+                                              └─────────────┬─────────────┘
+                                                            │
+                                                            ▼
+                                              ┌───────────────────────────┐
+                                              │ Transition Interview:     │
+                                              │ • status -> COMPLETED     │
+                                              │ • Emit interview.completed│
+                                              └─────────────┬─────────────┘
+                                                            │
+   ┌───────────────────────────┐                            ▼
+   │ Minutes of Meeting Ready  │              ┌───────────────────────────┐
+   │ • AI Transcript Generated │─────────────►│ Webhook: meeting.mom.ready│
+   │ • Action Items Extracted  │              │ • Fetch Transcript & MoM  │
+   └───────────────────────────┘              │ • Attach to Interview row │
+                                              └───────────────────────────┘
+--- Page 3 ---
+4. Custom Career Page CNAME Domain Routing Flow
+   JOB SEEKER BROWSER                           CANDIDATE FRONTEND (proxy.ts)
+   ┌───────────────────────────┐              ┌───────────────────────────┐
+   │ Request Host:             │─────────────►│ Intercept Host Header     │
+   │ careers.acmeglobal.com    │              │ Host != default platform? │
+   └───────────────────────────┘              └─────────────┬─────────────┘
+                                                            │
+                                                            ▼ (Resolve Tenant)
+   HIREX BACKEND API                          ┌───────────────────────────┐
+   ┌───────────────────────────┐              │ GET /public/career-domain │
+   │ Query Company by          │◄─────────────│ ?host=careers.acmeglobal  │
+   │ careerPageCustomDomain    │              └─────────────┬─────────────┘
+   └─────────────┬─────────────┘                            │
+                 │                                          ▼ (Cached 60s)
+                 └───────────────────────────►┌───────────────────────────┐
+                                              │ Internal URL Rewrite:     │
+                                              │ /careers/acme-global/...  │
+                                              │ • Branded logo & colors   │
+                                              │ • Scoped job openings     │
+                                              └───────────────────────────┘

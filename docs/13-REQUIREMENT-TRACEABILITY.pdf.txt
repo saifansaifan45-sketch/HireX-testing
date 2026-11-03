@@ -1,0 +1,389 @@
+
+--- Page 1 ---
+HireX — Requirement Traceability Matrix (RTM)
+Document ID: HXP-HANDOVER-13
+Platform Version: HireX V0 / Pre-Release Baseline
+Target Audience: QA Leads, Product Managers, Engineering Leads
+Last Updated: October 2026
+1. Traceability Matrix
+This matrix establishes bidirectional traceability linking Functional Requirements (FR), Architecture
+Components & Source Files, API Routes, and Verified Test Cases.
+Re
+q
+ID
+Requiremen
+t Title
+Component / Source Files API Endpoint Test
+Case ID
+Verificat
+ion
+Status
+FR
+-00
+1
+Multi-Role
+Authenticatio
+n
+src/auth/auth.control
+ler.ts ,
+src/candidates/candid
+ate-
+auth.controller.ts
+POST /api/auth/sign-
+in/email , POST
+/api/auth/sign-
+up/email
+TC-
+AUTH-
+001 , TC-
+AUTH-
+002
+PASS
+(Unit &
+E2E)
+FR
+-00
+2
+Portal
+Session
+Isolation
+src/auth/auth.guard.t
+s , src/auth/session-
+cookie.ts
+All protected routes TC-
+AUTH-
+004
+PASS
+(E2E
+Suite)
+FR
+-00
+3
+Interviewer
+Invite Token
+Onboarding
+src/auth/interviewer-
+auth.controller.ts
+GET
+/auth/interviewer/in
+vite , POST
+/auth/interviewer/in
+vite/accept
+TC-
+AUTH-
+003
+PASS
+(Unit
+Test)
+FR
+-00
+4
+Multivariable
+Job Search
+src/jobs/jobs.control
+ler.ts , hirex-
+frontend/src/app/jobs/
+page.tsx
+GET /jobs TC-
+CAND-
+001
+PASS
+(Manual
+& UI)
+FR
+-00
+5
+Dynamic
+Form Wizard
+Rendering
+src/applications/appl
+ications.controller.t
+s , src/application-
+form/
+GET
+/jobs/:id/applicatio
+n-form
+TC-
+CAND-
+002
+PASS
+(Unit
+Test)
+--- Page 2 ---
+Re
+q
+ID
+Requiremen
+t Title
+Component / Source Files API Endpoint Test
+Case ID
+Verificat
+ion
+Status
+FR
+-00
+6
+Application
+Draft
+Autosave &
+Guard
+hirex-
+frontend/src/app/jobs/
+[id]/apply/page.tsx
+N/A (Client Local
+Storage)
+TC-
+CAND-
+003
+PASS
+(Verified
+Code)
+FR
+-00
+7
+Guest
+Candidate
+Application
+src/applications/appl
+ications.controller.t
+s
+POST /public/guest-
+resume
+TC-
+CAND-
+006
+PASS
+(Integrat
+ion)
+FR
+-00
+8
+Recruiter
+Dynamic
+Form Builder
+src/jobs/jobs.control
+ler.ts , hirex-
+employer-
+frontend/src/app/jobs/
+new/
+POST
+/recruiters/jobs
+TC-REC-
+001
+PASS
+(Unit
+Test)
+FR
+-00
+9
+AI Resume
+Relevance
+Scoring
+src/common/utils/ai-
+match-scorer.ts
+POST /applications TC-REC-
+002
+PASS (8
+Unit
+Tests)
+FR
+-01
+0
+Strict
+Forward-
+Only Pipeline
+Guard
+src/applications/appl
+ications.service.ts
+PATCH
+/applications/:id/st
+atus
+TC-SM-
+001
+PASS
+(E2E
+Test)
+FR
+-01
+1
+Open
+Interview
+Pipeline
+Block
+src/applications/appl
+ications.service.ts
+PATCH
+/applications/:id/st
+atus
+TC-SM-
+002
+PASS
+(E2E
+Test)
+FR
+-01
+2
+Weekly
+Recurring
+Availability
+src/interviews/availa
+bility.controller.ts
+POST
+/interviews/availabi
+lity
+TC-INT-
+001
+PASS
+(Unit
+Test)
+FR
+-01
+3
+Self-Service
+Slot Booking
+&
+Concurrency
+src/interviews/bookin
+g.service.ts
+POST
+/interviews/booking
+TC-
+CAND-
+004 , TC-
+CAND-
+005
+PASS
+(Concurr
+ency
+E2E)
+--- Page 3 ---
+Re
+q
+ID
+Requiremen
+t Title
+Component / Source Files API Endpoint Test
+Case ID
+Verificat
+ion
+Status
+FR
+-01
+4
+MeetX Video
+Room
+Generation
+src/interviews/provid
+ers/schedular-
+meeting.provider.ts
+Schedular REST API TC-
+MEET-
+001 , TC-
+MEET-
+002
+PASS
+(Mock &
+Live)
+FR
+-01
+5
+Scorecard &
+Cultural Fit
+Submission
+src/interviews/interv
+iews.controller.ts
+POST
+/interviews/:id/feed
+back
+TC-INT-
+003 , TC-
+INT-004
+PASS
+(Unit &
+E2E)
+FR
+-01
+6
+Branded
+Offer PDF
+Generation
+src/offers/offers.ser
+vice.ts
+POST
+/recruiters/offers/g
+enerate
+TC-OFF-
+001
+PASS
+(Unit
+Test)
+FR
+-01
+7
+Stale Offer
+Auto-
+Expiration
+Cron
+src/offers/offers.ser
+vice.ts
+@Cron('0 * * * *') TC-OFF-
+002
+PASS
+(Unit
+Test)
+FR
+-01
+8
+Multi-File
+Document
+Upload
+src/documents/documen
+ts.service.ts
+POST
+/candidate/documents
+/upload
+TC-DOC-
+001
+PASS
+(Unit
+Test)
+FR
+-01
+9
+Document
+Rejection &
+Re-upload
+Loop
+src/documents/documen
+ts.controller.ts
+PATCH
+/recruiters/document
+s/:id/reject
+TC-DOC-
+002
+PASS
+(Unit
+Test)
+FR
+-02
+0
+Finalize Hire
+Compliance
+Gate
+hirex-employer-
+frontend/src/app/appli
+cants/[applicationId]
+/
+PATCH
+/applications/:id/st
+atus
+TC-SM-
+004
+PASS
+(UI &
+Backend
+)
+2. Coverage Analysis
+Total Functional Requirements: 20 / 20 Mapped (100% Coverage)
+Total Test Cases Linked: 80+ Test Cases Across 10 Modules
+Unverified Requirements: 0 (All 20 FRs verified via automated test suites or static analysis)

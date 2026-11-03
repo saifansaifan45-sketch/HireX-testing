@@ -1,0 +1,260 @@
+
+--- Page 1 ---
+HireX — Database Schema & Data Model
+Reference
+Document ID: HXP-HANDOVER-08
+Platform Version: HireX V0 / PostgreSQL + Prisma ORM
+Target Audience: Database Administrators, Backend Engineers, Data Engineers
+Last Updated: October 2026
+1. Database Overview & Migration History
+HireX uses PostgreSQL 15+ managed through Prisma ORM (v5+). The database schema contains 25
+models and 13 enums.
+Historical Migrations ( hirex-Backend/prisma/migrations )
+1. init : Initial multi-tenant schema with Company, User, Recruiter, Candidate, Job, Application.
+2. 20261007_schedular_interview_columns : Added hostJoinUrl  and candidateJoinUrl  to
+interviews  table.
+3. jr_missing_fields : Added resume snapshot and explicitly enforced Application.resume
+onDelete SetNull .
+4. 20261023_prd_gap_closure :
+Added ApplicationStatus.DOCUMENT_VERIFICATION
+Added OfferStatus.DRAFT , OfferStatus.EXPIRED
+Added Recommendation.LEANING_HIRE
+Added InterviewFeedback.culturalFitScore
+Added multi-file DocumentFile  table and document audit stamps ( verifiedAt , verifiedBy ,
+rejectionReason )
+Added Interviewer.sharePhotoWithCandidates
+2. Complete Enum Catalog (13 Enums)
+Enum Name Allowed Values Usage / Context
+UserRole CANDIDATE , RECRUITER , INTERVIEWER , ADMIN High-level
+authentication
+boundary
+--- Page 2 ---
+Enum Name Allowed Values Usage / Context
+RecruiterR
+ole
+ADMIN , RECRUITER , HIRING_MANAGER Recruiter
+organizational
+permissions
+RecruiterS
+tatus
+ACTIVE , INVITED , SUSPENDED Recruiter seat
+lifecycle
+JobStatus DRAFT , OPEN , PAUSED , CLOSED Job posting visibility
+state
+SectionTyp
+e
+DEFAULT , CUSTOM Application form
+section categorization
+QuestionTy
+pe
+SHORT_TEXT , LONG_TEXT , MULTIPLE_CHOICE , CHECKBOX ,
+DROPDOWN , NUMBER , DATE , FILE_UPLOAD
+Dynamic form field
+data types
+Applicatio
+nStatus
+APPLIED , SCREENING , INTERVIEW , OFFER_STAGE ,
+DOCUMENT_VERIFICATION , HIRED , REJECTED , HOLD
+Recruitment finite
+state machine
+InterviewT
+ype
+VIDEO , PHONE , IN_PERSON Interview medium
+InterviewS
+tatus
+ASSIGNED , CONFIRMED , COMPLETED , CANCELLED Interview session
+state
+SlotStatu
+s
+AVAILABLE , BOOKED , CANCELLED Self-service calendar
+slots
+Recommenda
+tion
+STRONG_HIRE , HIRE , LEANING_HIRE , NO_HIRE Interviewer scorecard
+decision
+OfferStatu
+s
+DRAFT , EXTENDED , ACCEPTED , DECLINED , EXPIRED Offer letter lifecycle
+DocumentSt
+atus
+PENDING , VERIFIED , REJECTED Compliance
+document status
+--- Page 3 ---
+3. Core Models & Field Catalog
+3.1 Company (Tenant Root)
+model Company {
+  id                      String      @id @default(uuid())
+  name                    String
+  slug                    String      @unique
+  logoUrl                 String?
+  website                 String?
+  industry                String?
+  location                String?
+  companySize             String?
+  about                   String?
+  careerPageCustomDomain  String?     @unique // CNAME custom domain
+  careerPagePublished     Boolean     @default(true)
+  createdAt               DateTime    @default(now())
+  updatedAt               DateTime    @updatedAt
+  recruiters              Recruiter[]
+  jobs                    Job[]
+  candidates              Candidate[]
+  applications            Application[]
+}
+3.2 User & Account (Better-Auth Primitives)
+model User {
+  id            String       @id @default(uuid())
+  name          String
+  email         String       @unique
+  emailVerified Boolean      @default(false)
+  image         String?
+  role          UserRole     @default(CANDIDATE)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  recruiter     Recruiter?
+  interviewer   Interviewer?
+  candidates    Candidate[]
+  resumes       Resume[]
+}
+--- Page 4 ---
+3.3 Job & Dynamic Form Schema
+model Job {
+  id              String            @id @default(uuid())
+  companyId       String
+  recruiterId     String
+  title           String
+  description     String
+  location        String
+  workMode        String            // On-site, Hybrid, Remote
+  employmentType  String            // Full-time, Part-time, Contract
+  salary          String?
+  skills          String[]
+  status          JobStatus         @default(OPEN)
+  createdAt       DateTime          @default(now())
+  company         Company           @relation(fields: [companyId], references: [id])
+  recruiter       Recruiter         @relation(fields: [recruiterId], references: [id])
+  applicationForm ApplicationForm?
+  applications    Application[]
+}
+model ApplicationForm {
+  id          String               @id @default(uuid())
+  jobId       String               @unique
+  title       String               @default("Application Form")
+  createdAt   DateTime             @default(now())
+  job         Job                  @relation(fields: [jobId], references: [id], onDelete: 
+Cascade)
+  sections    ApplicationSection[]
+}
+--- Page 5 ---
+3.4 Application & Interview Pipeline
+model Application {
+  id                  String            @id @default(uuid())
+  companyId           String
+  candidateId         String
+  jobId               String
+  status              ApplicationStatus @default(APPLIED)
+  formSnapshot        Json?             // Snapshot of form schema at submit time
+  screeningAnswers    Json?             // Answers mapped by questionId
+  resumeSnapshotUrl   String?
+  aiScore             Int?              // 0-100% resume match
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  company             Company           @relation(fields: [companyId], references: [id])
+  candidate           Candidate         @relation(fields: [candidateId], references: 
+[id])
+  job                 Job               @relation(fields: [jobId], references: [id])
+  interviews          Interview[]
+  offers              Offer[]
+  documents           Document[]
+}
+model Interview {
+  id                  String            @id @default(uuid())
+  applicationId       String
+  interviewerId       String?
+  scheduledAt         DateTime?
+  durationMinutes     Int               @default(60)
+  type                InterviewType     @default(VIDEO)
+  status              InterviewStatus   @default(ASSIGNED)
+  meetingId           String?           // Schedular / MeetX internal ID
+  meetingLink         String?           // Fallback/candidate meeting link
+  hostJoinUrl         String?           // Privileged interviewer host link
+  candidateJoinUrl    String?           // Attendee join link
+  candidateNotes      String?           // Public candidate agenda
+  interviewerNotes    String?           // Private recruiter briefing
+  createdAt           DateTime          @default(now())
+  application         Application       @relation(fields: [applicationId], references: 
+[id])
+  feedback            InterviewFeedback?
+}
+model InterviewFeedback {
+  id                  String            @id @default(uuid())
+  interviewId         String            @unique
+  interviewerId       String
+  ratings             Json              // Skill criteria ratings (1-5)
+  culturalFitScore    Int?              // 1-5 cultural fit score
+  feedback            String?           // Evaluation notes
+  recommendation      Recommendation
+  createdAt           DateTime          @default(now())
+--- Page 6 ---
+  updatedAt           DateTime          @updatedAt
+  interview           Interview         @relation(fields: [interviewId], references: 
+[id])
+}
+3.5 Offer & Document Compliance
+model Offer {
+  id                  String            @id @default(uuid())
+  applicationId       String
+  status              OfferStatus       @default(DRAFT)
+  salary              String
+  startDate           DateTime
+  expiresAt           DateTime?         // Used by hourly expiration cron
+  pdfUrl              String?           // Cloudflare R2 file URL
+  signature           String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  application         Application       @relation(fields: [applicationId], references: 
+[id])
+}
+model Document {
+  id                  String            @id @default(uuid())
+  applicationId       String
+  type                String            // GOVERNMENT_ID, DEGREE_CERTIFICATE
+  status              DocumentStatus    @default(PENDING)
+  rejectionReason     String?           // Mandatory on rejection
+  verifiedAt          DateTime?
+  verifiedBy          String?           // Recruiter ID
+  createdAt           DateTime          @default(now())
+  application         Application       @relation(fields: [applicationId], references: 
+[id])
+  files               DocumentFile[]
+}
+model DocumentFile {
+  id                  String            @id @default(uuid())
+  documentId          String
+  fileName            String
+  fileUrl             String            // Cloudflare R2 URL
+  fileKey             String
+  mimeType            String?
+  sizeBytes           Int?
+  createdAt           DateTime          @default(now())
+  document            Document          @relation(fields: [documentId], references: [id], 
+onDelete: Cascade)
+}
+--- Page 7 ---
+4. Key Constraints, Indexes & Integrity Rules
+1. Multi-Tenant Composite Keys: Candidate  enforces unique compound constraint
+@@unique([userId, companyId])  ensuring candidate profiles are scoped per tenant.
+2. Cascade Deletions:
+Deleting a Job  cascades to ApplicationForm , ApplicationSection , and
+ApplicationQuestion .
+Deleting a Document  cascades to child DocumentFile  records.
+Deleting an Interview  cascades to InterviewSlot  records.
+3. SetNull Protection: Application.resume  enforces onDelete: SetNull  preventing candidate
+account deletion from crashing historical job application records.
+4. Performance Indexes:
+Company.slug  (B-tree unique index)
+Company.careerPageCustomDomain  (B-tree unique index for CNAME resolution)
+User.email  (B-tree unique index)
+Verification.value  (B-tree index for invite token lookup)

@@ -1,0 +1,394 @@
+
+--- Page 1 ---
+HireX — Product Requirements Document
+(PRD)
+Document ID: HXP-HANDOVER-04
+Document Version: 1.0 (Production Architecture / Feature Complete)
+Target Audience: Product Managers, Business Analysts, QA Leads, Software Developers, Stakeholders
+Last Updated: October 2026
+1. Document Purpose, Version & Scope
+1.1 Purpose
+This Product Requirements Document (PRD) provides the definitive specification of the HireX recruitment
+platform. It captures verified business workflows, user journeys, functional and non-functional requirements,
+acceptance criteria, and system guardrails as implemented in the HireX codebase.
+1.2 Scope
+Candidate Portal: Branded career pages, job search, dynamic multi-step application form wizard with
+autosave, interview slot self-booking, electronic offer review, and onboarding document uploads.
+Recruiter Dashboard: Tenant organization setup, job requisition with custom form builder, Kanban
+pipeline state machine, AI resume scoring ( aiScore ), interview scheduling, offer generation, and
+document verification.
+Interviewer Workspace: Queue of assigned candidate interviews, recurring weekly availability
+calendar, candidate resume review, private recruiter briefings, and rubric scorecards with Cultural Fit
+rating.
+Backend Services: Better-Auth session cookie partitioning, Schedular (MeetX) video room lifecycle,
+Cloudflare R2 multi-file storage, and job distribution XML feeds.
+2. Product Overview & Problem Statement
+2.1 The Business Problem
+Modern recruitment teams struggle with fragmented software stacks:
+High Candidate Drop-Off: Rigid, repetitive application forms without draft auto-save cause candidates
+to abandon applications mid-way.
+Scheduling Friction: 4 to 6 back-and-forth emails between recruiters, candidates, and interviewers to
+coordinate a single 45-minute technical session.
+Pipeline Data Leakage: Lack of forward-only state progression leads to accidental reversions of
+candidates who have already passed technical rounds.
+--- Page 2 ---
+Post-Offer Drop-Off & Compliance Failures: Disconnected document collection via unencrypted
+email attachments leads to missing compliance documents prior to joining.
+2.2 The HireX Solution
+HireX provides an integrated, multi-tenant talent operating system:
+1. Dynamic Form Builder & Wizard: Custom questions per job posting with local draft autosave and
+beforeunload  guards.
+2. MeetX Real-Time Video Orchestration: Self-service slot booking backed by recurring interviewer
+availability and automated WebRTC room links.
+3. Forward-Only State Machine: Strict validation rules preventing invalid regressions (e.g. no regression
+to APPLIED ), hard-blocking pipeline advance when interviews remain open.
+4. Compliance Document Verification: Mandatory DOCUMENT_VERIFICATION  stage post-offer
+acceptance with multi-file uploads and in-browser verification.
+3. Stakeholders & User Personas
+Persona Primary Goal Core Responsibilities Touchpoint Portal
+Candidate
+(Job
+Seeker)
+Secure employment
+with transparent
+updates
+Search jobs, fill applications, self-book
+interview slots, sign offers, upload
+compliance documents
+Candidate Portal
+( :3000  or custom
+CNAME)
+Recruiter /
+HR Admin
+Source, evaluate,
+and hire talent
+efficiently
+Create jobs, customize form questions,
+manage Kanban pipeline, generate offers,
+verify documents
+Recruiter Portal
+( :3002 )
+Technical
+Interviewe
+r
+Evaluate candidate
+technical
+competence
+Configure weekly availability, review
+candidate resumes and private briefings,
+submit scorecards
+Interviewer Portal
+( :3003 )
+Hiring
+Manager
+Oversee role
+requirements and
+final hiring
+Review aggregated scores, approve offers,
+finalize hires
+Recruiter Portal
+(Scoped access)
+4. Role-Based Access Control (RBAC) Matrix
+Action / Capability Candid
+ate
+Recruiter
+Admin
+Recruiter
+Member
+Hiring
+Manager
+Intervie
+wer
+Browse Public / Tenant Jobs ✅ ✅ ✅ ✅ ✅
+--- Page 3 ---
+Action / Capability Candid
+ate
+Recruiter
+Admin
+Recruiter
+Member
+Hiring
+Manager
+Intervie
+wer
+Submit Job Application ✅ ❌ ❌ ❌ ❌
+Create / Edit Job Postings ❌ ✅ ✅ ❌ ❌
+Customize Job Application
+Form
+❌ ✅ ✅ ❌ ❌
+Advance Candidate Pipeline
+Stage
+❌ ✅ ✅ ✅ ❌
+Schedule Interviews &
+Assign Panel
+❌ ✅ ✅ ❌ ❌
+View Private Interviewer
+Briefing
+❌ ✅ ✅ ✅ ✅
+Submit / Update Interview
+Scorecard
+❌ ❌ ❌ ❌ ✅
+Generate & Extend PDF
+Offer
+❌ ✅ ❌ ❌ ❌
+Accept / Decline Offer Online ✅ ❌ ❌ ❌ ❌
+Upload Compliance
+Documents
+✅ ❌ ❌ ❌ ❌
+Verify / Reject Compliance
+Documents
+❌ ✅ ✅ ❌ ❌
+Execute "Finalize Hire" ❌ ✅ ❌ ✅ ❌
+Manage Company Settings &
+Team
+❌ ✅ ❌ ❌ ❌
+5. End-to-End Recruitment Lifecycle & State Machine
+HireX models the recruitment lifecycle through a forward-only finite state machine:
+--- Page 4 ---
+  [ APPLIED ]
+       │
+       ▼
+ [ SCREENING ]  ──────► [ REJECTED ] (Can be rejected from any active stage)
+       │
+       ▼
+ [ INTERVIEW ] (Open interviews hard-block forward movement)
+       │
+       ▼
+ [ OFFER_STAGE ] (Recruiter extends offer; generates DRAFT or EXTENDED offer)
+       │
+       ├──► Candidate Declines ──► [ REJECTED / DECLINED ]
+       │
+       └──► Candidate Accepts
+                 │
+                 ▼
+     [ DOCUMENT_VERIFICATION ] (Post-offer compliance gate)
+                 │
+                 ▼ (All mandatory docs VERIFIED + "Finalize Hire")
+             [ HIRED ] (Terminal Stage)
+6. Functional Requirements (FR) & Acceptance Criteria
+Module A: Authentication & Identity
+FR-001: Multi-Role Credential Authentication
+Description: System must support email and password authentication with distinct role scoping for
+Candidate, Recruiter, and Interviewer.
+Linked Test Cases: TC-AUTH-001 , TC-AUTH-002 , TC-AUTH-004
+Acceptance Criteria (Given / When / Then):
+Given an unauthenticated candidate on the login page,
+When they enter valid registered credentials,
+Then the system establishes a secure HTTP-only session cookie and navigates to the Candidate
+Dashboard.
+When they enter a password shorter than 8 characters,
+Then the form blocks submission with an inline validation warning.
+FR-002: Portal Session Isolation (ADR-001)
+Description: Sessions established on one portal must not grant access to another portal with higher
+privileges.
+Linked Test Cases: TC-AUTH-004
+Acceptance Criteria:
+Given an active Candidate session cookie on :3000 ,
+--- Page 5 ---
+When the browser navigates directly to :3002/dashboard  (Recruiter) or :3003/dashboard
+(Interviewer),
+Then the backend guard returns 403 Forbidden  / 401 Unauthorized  and redirects the user to
+the portal's /login  screen.
+FR-003: Interviewer Magic Link / Invite Token Redemption
+Description: Interviewers can register via single-use invitation tokens generated by recruiters.
+Linked Test Cases: TC-AUTH-003
+Acceptance Criteria:
+Given a valid, unexpired token in the URL ( /register?token=... ),
+When the user provides their name and sets an 8+ character password,
+Then the account is activated, the token is permanently consumed, and the user enters the
+Interviewer Workspace without an intermediate login step.
+Module B: Candidate Portal & Apply Wizard
+FR-004: Multivariable Job Search & Filtering
+Description: Candidates can search active job requisitions by keyword, location, and work mode.
+Linked Test Cases: TC-CAND-001
+Acceptance Criteria:
+Given a list of published jobs,
+When a candidate types a keyword and selects filter chips,
+Then the listing updates in real time with the matching job count.
+FR-005: Dynamic Application Form Rendering
+Description: Candidate application wizard dynamically renders input fields according to the employer's
+per-job form schema.
+Linked Test Cases: TC-CAND-002
+Acceptance Criteria:
+Given a job with custom sections and fields (Text, Select, Number, File Upload),
+When a candidate opens the apply wizard,
+Then each field is rendered according to its data type with required-field indicators.
+FR-006: Local Draft Persistence & Unsaved Changes Guard
+Description: Candidate form responses must be saved locally to prevent data loss.
+Linked Test Cases: TC-CAND-003
+Acceptance Criteria:
+Given a candidate who has completed Step 1 and part of Step 2,
+--- Page 6 ---
+When the page is reloaded,
+Then previously entered values are restored from browser local storage.
+When the user attempts to close the tab with unsaved inputs,
+Then a native beforeunload  warning is triggered.
+FR-007: Unauthenticated Guest Candidate Application
+Description: Candidates can apply without prior registration via guest submission.
+Linked Test Cases: TC-CAND-006
+Acceptance Criteria:
+Given an unauthenticated visitor,
+When they supply their name, email, and upload a resume via /public/guest-resume ,
+Then the backend links the application to an existing profile if matching email is found, or
+provisions a guest candidate record automatically.
+Module C: Recruiter Portal & Pipeline Management
+FR-008: Dynamic Application Form Builder
+Description: Recruiters can configure custom sections and custom questions for each job posting.
+Linked Test Cases: TC-REC-001
+Acceptance Criteria:
+Given a recruiter editing a job,
+When they add sections and questions with validation rules,
+Then the schema is persisted in JSONB format and enforced on subsequent candidate
+applications.
+FR-009: AI Resume Match Scoring ( aiScore )
+Description: Automatically scores candidate resumes against job requirements (0–100%).
+Linked Test Cases: TC-REC-002
+Acceptance Criteria:
+Given a candidate application with a resume,
+When the application is submitted,
+Then the backend calculates an aiScore  (0-100%) comparing extracted resume text with
+required job skills, falling back to local TF-IDF if Groq LLM API is unset.
+FR-010: Strict Forward-Only Pipeline Stage Guard
+Description: Prohibits reverting candidate cards back to the initial APPLIED  status.
+Linked Test Cases: TC-SM-001
+--- Page 7 ---
+Acceptance Criteria:
+Given an application in SCREENING , INTERVIEW , or later,
+When a user attempts to update status to APPLIED ,
+Then the request is rejected with 400 Bad Request  ("Cannot revert candidate to APPLIED
+stage").
+FR-011: Open Interview Hard Block
+Description: Blocks advancing to OFFER_STAGE  while an interview round is open.
+Linked Test Cases: TC-SM-002
+Acceptance Criteria:
+Given an application with an interview in ASSIGNED  or CONFIRMED  status,
+When the recruiter attempts to transition the candidate to OFFER_STAGE ,
+Then the transition is blocked: "Open interviews must be completed or cancelled before
+advancing."
+Module D: Interviewer Workspace & MeetX Scheduling
+FR-012: Recurring Weekly Availability Configuration
+Description: Interviewers can specify recurring weekly time windows when they are available for
+interviews.
+Linked Test Cases: TC-INT-001
+Acceptance Criteria:
+Given an interviewer in the Interviewer Portal,
+When they configure recurring days and times (e.g. Mon/Wed 14:00–18:00) with a timezone,
+Then the availability schedule persists and is used by the slot generation engine.
+FR-013: Self-Service Slot Booking with Atomic Concurrency Guard
+Description: Candidates choose an interview slot; concurrent double-booking is blocked.
+Linked Test Cases: TC-CAND-004 , TC-CAND-005
+Acceptance Criteria:
+Given an open interview slot,
+When a candidate confirms booking,
+Then the slot updates to BOOKED  and the interview updates to CONFIRMED .
+When a second candidate attempts to book the same slot concurrently,
+Then the second request fails with 409 Conflict .
+--- Page 8 ---
+FR-014: MeetX Video Room Generation & URL Privilege Split
+Description: Schedular (MeetX) creates video rooms with separate host and candidate join URLs.
+Linked Test Cases: TC-MEET-001 , TC-MEET-002
+Acceptance Criteria:
+Given a confirmed interview booking,
+When the meeting provider is invoked,
+Then it records hostJoinUrl  (privileged controls for interviewer) and candidateJoinUrl
+(attendee link for candidate).
+FR-015: Structured Scorecard & Cultural Fit Submission
+Description: Interviewers submit rubric criteria scores (1–5), Cultural Fit Score, and recommendation.
+Linked Test Cases: TC-INT-003 , TC-INT-004
+Acceptance Criteria:
+Given a completed interview call,
+When the interviewer submits evaluation ratings, Cultural Fit Score (1-5), and recommendation
+( STRONG_HIRE , HIRE , LEANING_HIRE , NO_HIRE ),
+Then the feedback is recorded and the interview status updates to COMPLETED .
+Module E: Offer Letters & Document Verification
+FR-016: Branded Offer Letter Generation & Variable Interpolation
+Description: Generates PDF offer letters with interpolated candidate and compensation placeholders.
+Linked Test Cases: TC-OFF-001
+Acceptance Criteria:
+Given a candidate in OFFER_STAGE ,
+When a recruiter generates an offer,
+Then placeholders ( {{candidate_name}} , {{salary}} , {{start_date}} ,
+{{expiry_date}} ) are replaced with localized values, a PDF is created, and uploaded to
+Cloudflare R2.
+FR-017: Stale Offer Auto-Expiration Cron
+Description: Hourly background job expires stale extended offers past their expiration timestamp.
+Linked Test Cases: TC-OFF-002
+Acceptance Criteria:
+Given an offer in EXTENDED  status with expiresAt < NOW() ,
+When the hourly cron runs,
+Then the offer status updates to EXPIRED  and the candidate cannot accept the offer.
+--- Page 9 ---
+FR-018: Multi-File Compliance Document Upload
+Description: Candidates in DOCUMENT_VERIFICATION  can upload multiple files per document
+requirement.
+Linked Test Cases: TC-DOC-001
+Acceptance Criteria:
+Given an application in DOCUMENT_VERIFICATION ,
+When a candidate uploads multiple files for a document (e.g., front/back ID),
+Then files are persisted to Cloudflare R2 and attached as DocumentFile  records in PENDING
+state.
+FR-019: Document Rejection & Re-Upload Loop
+Description: Rejecting a document requires a mandatory reason; candidate re-upload clears audit
+stamps.
+Linked Test Cases: TC-DOC-002
+Acceptance Criteria:
+Given a pending document,
+When a recruiter rejects it with a reason ("Scan illegible"),
+Then the document status updates to REJECTED .
+When the candidate re-uploads a replacement file,
+Then rejectionReason , verifiedBy , and verifiedAt  are cleared and status resets to
+PENDING .
+FR-020: Finalize Hire Gate
+Description: Moving to HIRED  is locked until all required documents are verified.
+Linked Test Cases: TC-SM-004
+Acceptance Criteria:
+Given an applicant in DOCUMENT_VERIFICATION ,
+When any mandatory document is missing or not in VERIFIED  status,
+Then the "Finalize Hire" button is disabled and status dropdown cannot be set to HIRED .
+7. Non-Functional Requirements (NFR)
+ID Category Requirement Specification
+NFR-
+001
+Multi-Tenancy Every company-specific table query must include companyId  filter. Cross-
+tenant reads or writes are strictly prohibited.
+--- Page 10 ---
+ID Category Requirement Specification
+NFR-
+002
+Session
+Security
+Session cookies must be HTTP-only, secure in production, with
+SameSite=Lax . Cross-portal cookie collision is mitigated via ADR-001.
+NFR-
+003
+Webhook
+Authenticity
+All incoming Schedular/MeetX webhooks must validate HMAC SHA-256
+signatures before processing payloads (fail-closed).
+NFR-
+004
+Performance Dynamic application wizard steps and dashboard pages must render in under
+800ms. Search results return within 200ms.
+NFR-
+005
+Storage
+Integrity
+Resumes, offer letters, and compliance files must be stored on Cloudflare R2
+with cascade protection ( SetNull  on application delete).
+NFR-
+006
+Availability &
+Resilience
+System must gracefully degrade to mock meeting links and local TF-IDF
+scoring if external third-party APIs (Schedular, Groq) are unreachable.
+NFR-
+007
+Auditability Every document verification, rejection, and pipeline stage advancement must
+record timestamps and user IDs.
+8. Open Questions & Future Enhancements
+1. Vendor Job Board Direct APIs: Currently, XML feeds are active; direct API posting will be enabled
+once vendor partner keys (LinkedIn/Naukri enterprise credentials) are acquired.
+2. Automated Reminders: Adding automated SMS/WhatsApp reminders for upcoming interview calls 1
+hour prior to session start.
+3. Custom Domain SSL Automation: Automated provisioning of Let's Encrypt certificates for company
+CNAME domains.

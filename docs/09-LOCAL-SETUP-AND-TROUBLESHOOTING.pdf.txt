@@ -1,0 +1,105 @@
+
+--- Page 1 ---
+HireX — Local Setup, Configuration &
+Troubleshooting
+Document ID: HXP-HANDOVER-09
+Platform Version: HireX V0 / Local Developer Onboarding Guide
+Target Audience: New Developers, QA Engineers, DevOps
+Last Updated: October 2026
+1. Prerequisites & System Requirements
+Before starting local development, ensure the following are installed:
+Node.js: v20.x  or higher (LTS recommended)
+Package Manager: npm  (v10+)
+Database: PostgreSQL 15+ running locally on port 5432
+Operating System: Windows, macOS, or Linux
+2. Step-by-Step Local Environment Setup
+2.1 Backend API Setup ( hirex-Backend )
+cd hirex-Backend
+# 1. Install dependencies
+npm install
+# 2. Configure environment variables
+# Copy .env.example to .env
+cp .env.example .env
+# 3. Apply database migrations
+npx prisma migrate deploy
+# 4. Seed initial multi-tenant test data
+npx prisma db seed
+# 5. Start the backend development server (Port: 3001)
+npm run start:dev
+--- Page 2 ---
+2.2 Recruiter Portal Setup ( hirex-employer-frontend )
+cd hirex-employer-frontend
+# 1. Install dependencies
+npm install
+# 2. Start the employer development server (Port: 3002)
+npm run dev -- -p 3002
+2.3 Candidate Portal Setup ( hirex-frontend )
+cd hirex-frontend
+# 1. Install dependencies
+npm install
+# 2. Start the candidate development server (Port: 3000)
+npm run dev -- -p 3000
+2.4 Interviewer Portal Setup ( interviewer )
+cd interviewer
+# 1. Install dependencies
+npm install
+# 2. Start the interviewer development server (Port: 3003)
+npm run dev -- -p 3003
+3. Local Port & Service Allocation Map
+Portal / Service Directory Local URL Port
+Candidate Portal hirex-frontend http://localhost:3000 3000
+Backend REST API hirex-Backend http://localhost:3001 3001
+Recruiter Dashboard hirex-employer-frontend http://localhost:3002 3002
+Interviewer Workspace interviewer http://localhost:3003 3003
+--- Page 3 ---
+4. Default Seeded Credentials
+After running npx prisma db seed , the following pre-seeded test accounts are available:
+Role Portal Login URL Test Email Password Pre-loaded Context
+Recruiter
+Admin
+http://localhost:3
+002/login
+recruiter@hirex
+.dev
+Password
+123!
+HireX Demo Corp, 4
+Open Jobs
+Interviewer http://localhost:3
+003/login
+rahul.sharma@hi
+rex.dev
+Password
+123!
+Principal Architect,
+Confirmed session
+Candidate http://localhost:3
+000/login
+rahul@hirex.de
+v
+Password
+123!
+Senior Full Stack
+Engineer, Resume
+5. Troubleshooting Common Failure Modes
+5.1 "ECONNREFUSED 127.0.0.1:5432"
+Cause: PostgreSQL service is not running locally.
+Fix: Start PostgreSQL service via your OS service manager (e.g. services.msc  on Windows or brew
+services start postgresql  on macOS). Verify credentials in DATABASE_URL .
+5.2 "Prisma Schema Drift / Migration Warnings"
+Rule: NEVER run npx prisma migrate reset  in an environment where you want to keep test data.
+Fix: Always run npx prisma migrate deploy  to apply pending migrations incrementally.
+5.3 Cookie Not Being Saved / Login Redirect Loop
+Cause: COOKIE_DOMAIN  environment variable is set incorrectly.
+Fix: For local development ( localhost ), ensure COOKIE_DOMAIN  is commented out or empty in
+hirex-Backend/.env . Leading dot domains (e.g. .hire.zobay.in ) only work in deployed multi-
+subdomain environments.
+5.4 Schedular / MeetX Video Links Show
+https://meet.hirex.dev/join/mtg_...
+Cause: SCHEDULAR_API_KEY  is not set in .env .
+Status: This is the intended mock development fallback. If you wish to generate live Schedular video
+links, obtain a dev API key from the platform team and populate SCHEDULAR_API_KEY .
+--- Page 4 ---
+5.5 Port Conflicts (EADDRINUSE: 3000 / 3001 / 3002 / 3003)
+Fix: Check running Node processes ( Get-Process node  on Windows PowerShell or killall node
+on macOS/Linux) and terminate lingering development servers.
